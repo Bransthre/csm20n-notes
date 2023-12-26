@@ -1,2 +1,76 @@
-\chapter{Introduction to Signals}
-Hello
+\chapter{Functions}
+
+\section{Definition of Function}
+There have been many interpretations of functions in the history of mathematics.
+Popularly, we mark a function $f$ as a relationship between sets, which the rules of this relationship we will discuss later.
+With that in mind, the notation of a function is:
+\[
+    f : X \rightarrow Y
+\]
+where $X$, $Y$ are sets that the function $f$ concerns. Specifically, the function notes one specific value in $Y$ for every element in $X$. In other words:
+\[
+    \forall x \in X, \exists! y \in Y: y = f(x)
+\]
+(for all $x$ in $X$, the domain of the function, there exists one and only one $y$ in $Y$, the codomain of the function, that such $x$ corresponds to. We denote this value as $y = f(x)$.)
+
+Functions can also be mathematically defined by expanding on the above expression. For example, a function that maps every real number $x$ to its squared value would be noted as:
+\[
+    \forall x \in \mathbb{R}, f(x) = x^2
+\]
+for which we would also see that the range of this function is $\mathbb{R}$.
+
+However, functions may be multivariate, such that we need a set of sets (a higher-order set) to dictate the domain of our function.
+For example, for a function that receives two real numbers and returns its sum, we may denote the function as such:
+\[
+    \forall (x_1, x_2) \in \mathbb{R} \times \mathbb{R}, g(x_1, x_2) = x_1 + x_2
+\]
+where
+\[
+    g: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}
+\]
+
+\section{The Properties of Functions}
+A function is, in its nature, the relationship of sets: it is a relationship of elements from set $A$ to set $B$. Mathematically expressed, \\
+\[(\forall x \in A) (f(x) \in B), f : A \rightarrow B\]
+\begin{ln-define}{Injective, Surjective, Bijection}{}
+    Injective, Surjective, and Bijective are all properties of functions, relationship between two sets $A$ and $B$. \\
+    We call the $A$ the set of \textit{pre-images}, and $B$ the set of \textit{images}.
+    \begin{bindenum}
+        \item{
+            \textbf{Injective}: Each image (output) has at most one pre-image (input). This type of function is thus called a "one-to-one" function.
+            \begin{center}
+                \begin{tikzpicture}
+                    \node[circ] (A1) at (0, 0) [label=left:$A_1$] {};
+                    \node[circ] (A2) at (0, 0.3) [label=left:$A_2$] {};
+                    \node[circ] (B1) at (2, 0) [label=right:$B_1$] {};
+                    \node[circ] (B2) at (2, 0.3) [label=right:$B_2$] {};
+                    \node[circ] (B3) at (2, 0.6) [label=right:$B_3$] {};
+                    \draw (A1) -- (B1);
+                    \draw (A2) -- (B2);
+                    \draw (0, 0.15) ellipse (0.8cm and 0.8cm);
+                    \draw (2, 0.3) ellipse (0.8cm and 0.8cm);
+                \end{tikzpicture}
+            \end{center}
+        }
+        \item{
+            \textbf{Surjective}: Each image (output) has at least one pre-image (input). This type of function is "onto".
+            \begin{center}
+                \begin{tikzpicture}
+                    \node[circ] (A1) at (0, 0) [label=left:$A_1$] {};
+                    \node[circ] (A2) at (0, 0.3) [label=left:$A_2$] {};
+                    \node[circ] (A3) at (0, 0.6) [label=left:$A_3$] {};
+                    \node[circ] (B1) at (2, 0) [label=right:$B_1$] {};
+                    \node[circ] (B2) at (2, 0.3) [label=right:$B_2$] {};
+                    \draw (A1) -- (B1);
+                    \draw (A2) -- (B2);
+                    \draw (A3) -- (B2);
+                    \draw (0, 0.3) ellipse (0.8cm and 1.2cm);
+                    \draw (2, 0.15) ellipse (0.8cm and 1.2cm);
+                \end{tikzpicture}
+            \end{center}
+        }
+        \item {
+            \textbf{Bijective}: A function is Bijective if the function is both injective and surjective. In other words, each image (output) has exactly one pre-image (input) and vice versa.
+        }
+    \end{bindenum}
+\end{ln-define}

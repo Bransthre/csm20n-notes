@@ -1,2 +1,233 @@
-\chapter{Functions}
-Hello
+
+\chapter{Propositional Logic}
+
+\section{Definition of Proposition}
+To speak the language of mathematics, we must familiarize ourselves with objects of the mathematical language. One fundamental block of this mathematical language is a \textbf{proposition}.
+\begin{ln-define}{Proposition}{}
+    A proposition is a logical statement that is either true or false. \\
+    In other words, it is a mathematical statement that could be correct, but also could be incorrect.
+\end{ln-define}
+Propositions need to be either true or false, which means it cannot be statements that can yield some ambiguous result. \\
+And because they usually are not known to be true or false, we often need to prove propositions in discrete mathematics.
+\begin{ln-think}{What should a proposition be like?}{}
+    Which of the following qualifies as a proposition?
+    \begin{enumerate}
+        \item[(a)] $\sqrt{3}$ is rational.
+        \item[(b)] 2 + 2
+        \item[(c)] I often never give up or let down
+    \end{enumerate}
+    \tcblower
+    Option (a) is a statement that has to either hold true or false, because this value $\sqrt{3}$ is either rational or irrational. \\
+    Option (b) is a mathematical expression, and there is no true or false aspect to it. It is not a proposition. \\
+    Last but not least, option (c) is just a statement, because the word ``often`` is not properly defined. If propositions are supposed to clearly hold true or false, it should not contain blurrily defined words. \\
+    The answer, therefore, is option (a).
+\end{ln-think}
+
+\section{Logical Operations of Proposition}
+There are approximately four methods of using preexistent propositions to make new propositions, and we do so to produce complicated propositions from simpler subparts. \\
+These four ways being:
+\begin{bindenum}
+    \item \textbf{Conjunction}: $P \land Q$, works similarly as the boolean ``and``.
+    \item \textbf{Disjunction}: $P \lor Q$, works similarly as the boolean ``or``.
+    \item \textbf{Negation}: $\neg P$, works similarly as the boolean ``not``.
+    \item \textbf{Implies}: $P \implies Q$, which states a familiar phrase of ``if P, then Q``. Here, the proposition $P$ is called a hypothesis, and $Q$ a conclusion.
+\end{bindenum}
+To demonstrate the behaviors of these operations, we may use a \textbf{truth table}. A truth table example for the operation ``Conjunction`` is attached below:
+\begin{ln-fig}{Truth Table for Conjunction}{}
+    A truth table is a table that points out the result of an operation on statements $P$ and $Q$, for a set of given boolean values that $P$ and $Q$ each result in.
+    \begin{center}
+        \begin{tabular}{c c||c}
+            $P$ & $Q$ & $P \land Q$ \\
+            \hline
+            T & T & T \\
+            \hline
+            T & F & F \\
+            \hline
+            F & T & F \\
+            \hline
+            F & F & F
+        \end{tabular}
+    \end{center}
+\end{ln-fig}
+Now we may discuss some other properties of propositions. \\
+First of all, there is a fundamental principle called \textbf{Law of the Excluded Middle}, which states what is as follows:
+\begin{ln-axiom}{Law of Excluded Middle}{}
+    For any proposition $P$, $P \lor \neg P$ always holds true, because $P$ is either true or false (not true).
+\end{ln-axiom}
+Here, propositions like $P \lor \neg P$ that always hold true are called \textbf{tautologies}. \\
+Meanwhile, propositions that are always false, such as $P \land \neg P$ (which cannot be true, since $P$ is either true or false), are called \textbf{contradictions}. \\
+Implications also have interesting truth table properties:
+\begin{ln-fig}{Truth Table for Implication}{}
+    A truth table for implications is as follows:
+    \begin{center}
+        \begin{tabular}{c c||c c}
+            $P$ & $Q$ & $P \implies Q$ & $\neg P \lor Q$ \\
+            \hline
+            T & T & T & T \\
+            \hline
+            T & F & F & F\\
+            \hline
+            F & T & T & T\\
+            \hline
+            F & F & T & T
+        \end{tabular}
+    \end{center}
+    While this provides that the implication is only false when $P$ is true and $Q$ is false, this also provides a not so intuitive insight: An implication is trivially true when the hypothesis is false. \\
+    This situation is known as \textbf{``vacuously true''}. \\
+    The reason why this insight seems to hold is because while we cannot confirm the conclusion is false when the hypothesis is false, this is also the nature of how if-then statements are expected to be defined. \\
+
+    Indicated via the above truth table, as $P \implies Q$ and $\not P \lor Q$ have the exact same boolean behavior on truth table, they are logically equivalent. This means they are statements that perform the logical behavior and meaning.
+\end{ln-fig}
+Interestingly, there are also various ways to pronounce implications, such as ``if P, then Q``, as well as ``Q if P``, and many more. \\
+Sometimes we also come across words that seem to connect two propositions in a tighter implication, such as ``iff``. \\
+An \textbf{iff} relationship is also standardly pronounced as \textbf{if and only if}, which is mathematically expressed as $P \iff Q$. This ``iff`` holds if both $P \implies Q$ and $Q \implies P$ are true. Consequentially, and as encountered in previous coursework, such as EECS 16A, the proof of an ``iff`` statement is at its nature the proof of two smaller statements.
+
+\section{Implications from Implications}
+For an implication $P \implies Q$, we may define two other implications out of it:
+\begin{bindenum}
+    \item \textbf{Contrapositive}: $\neg Q \implies \neg P$, which is logically equivalent to $P \implies Q$. At its implication: if a statement $P$'s contrapositive is true, so should the statement $P$ per se.
+    \item \textbf{Converse}: $Q \implies P$, which does not always hold true. In some cases, converse statements can hold true, but usually accompanies some extra conditions. Some examples can be observed in the contents of MATH 53.
+\end{bindenum}
+
+When two propositions are logically equivalent, we may mathematically denote it with the $\equiv$ symbol. \\
+An example of usage would be stating an implication the logical equivalent of its contrapositive, in the forms:
+\[(P \implies Q) \equiv (\neg Q \implies \neg P)\]
+An application of this is a new approach of performing proofs. To prove a prompt that states a theorem as an implication $P \implies Q$, by proving its contrapositive, which is in some cases easier than proving the prompt directly, we can manage to indirectly prove the prompt. \\
+This application will be introduced in the next chapter as ``proof by contrapositive''.
+
+\section{Quantifiers}
+
+\subsection{Use of Quantifiers}
+In the previous chapter, we introduced the usage of quantifiers as an abbreviation and selector of elements in sets to which a condition holds, in the format of:
+\[\text{<quantifier selecting clause> <second clause containing condition to hold for selected values>}\]
+The second clause is effectively a proposition, while the entire sentence containing the first and second clause is also effectively a proposition.
+
+There is a more sophisticated way to express the first clauses of these forms of propositions. \\
+The first clause has a quantifier, and throughout a ``universe'' we are working with (abstractly, a wide variety of mathematical objects following some conventions), the statement is quantified (holding true) for a selected range of objects in this universe. \\
+So syntactically, the quantifier serves to involve this range of quantification for our proposition.
+
+Let me expound on this abstraction of ``universe'' further. Say we attempt to qualify a proposition on all natural numbers, such as:
+\[
+    \forall x \in \N, x \in \Q
+\]
+Then, the total set of objects I'm working through is the set of all natural numbers, and is therefore the \textbf{``universe'': a collection of all objects to be qualified in this proposition}.
+In that sense, universe is a set.
+
+In a finite universe, there is also another way of conceptualizing the quantifiers we know:
+\begin{ln-think}{Propositional Logic in Quantifiers}{}
+    Let us work with a universe $\U = {U_1, \dots, U_n}$, where $n$ is some finite natural number and elements of this universe are some mathematical object. \\
+    Then:
+    \begin{bindenum}
+        \item \textbf{Universal Quantifiers}: $(\forall x \in \U (P(x))) \equiv (P(U_1) \land \dots \land P(U_n))$
+        \item \textbf{Existential Quantifiers}: $(\exists x \in \U (P(x))) \equiv (P(U_1) \lor \dots \lor P(U_n))$
+    \end{bindenum}
+\end{ln-think}
+To express more complicated propositions, we must expand beyond the previous first-clause-second-clause format for propositions. This is especially when we are selecting two ranges of values to describe a multi-variable proposition with.
+\begin{ln-think}{How to read complicated propositions?}{}
+    Say we are dealing with the proposition:
+    \[(\forall x \in \Z)(\exists y \in Z)(x < y)\]
+    Here, I can observe two quantifying clauses and the last clause that stands for a proposition. In fact, propositions involving quantifiers will always have the last clause as a proposition, due to the syntactical limits and customs of mathematical language. \\
+    Now let us try translating each clause into the English language:
+    \begin{enumerate}
+        \item $\forall x \in \Z$: For all objects $x$ that belongs to $\Z$, the set of all integers.
+        \item $\exists y \in \Z$: There exists an object $y$ that belongs to $\Z$, the set of all integers.
+        \item $x < y$: Object $x$ is smaller than $y$.
+    \end{enumerate}
+    Piecing the clauses together: For all objects $x$ that belongs to $\Z$, the set of all integers, there exists an object $y$ that belongs to $\Z$ such that $x$ is smaller than $y$. \\
+    This proposition, in fact, holds true, since we can always find a larger integer. \\
+    However, the proposition with a reversed order for quantifier clauses:
+    \[(\exists y \in Z)(\forall x \in \Z)(x < y)\]
+    has to hold False. \\
+
+    With the above translating process, this statement states that: there is an object $y$ that belongs to $\Z$, the set of all integers, such that for all objects $x$ that belongs to $\Z$ such that $x$ is smaller than $y$. \\
+    In other words, it assumes the existence of one largest integer, which does not exist!
+\end{ln-think}
+
+Then, let us look at an example from the Fall 2022 Midterm 1:
+\begin{ln-example}{Reading Complicated Quantifier Statements}{}
+    Which logical expression(s) below correspond to the predicate that $p$ is prime? \\
+    \begin{bindenum}
+        \item[a.] $(\forall b \in \N) \big( (b \leq 1) \lor \neg(\exists a \in \N)(a \neq 0 \land ab \neq p) \big)$
+        \item[b.] $\neg\big( (\exists a, b \in \N) ((a \geq 2) \land (a < p) \land (p = ab)) \big)$
+    \end{bindenum}
+    \tcblower
+    For the expression (a), it states that:
+    \begin{quote}
+        For all natural numbers $b$, either $b \leq 1$ or there does not exist a natural number $a$ such that $a$ is nonzero and $ab \neq p$. \\
+    \end{quote}
+    Therefore, for any positive integer $b$ larger than $2$, there does not exist another positive integer $a$ such that $ab \neq p$. \\
+    However, let's consider the possibility $p = 2$, which is prime, then for an integer $b = 2$, there exists $a = 1$ such that $ab = 2$. \\
+    Therefore, the trueness of expression (a) does not indicate that $p$ is prime. \\
+
+    Now, consider expression (b), which instead states that:
+    \begin{quote}
+        It is not such that there exists two natural numbers $a$, $b$ where simulatneously, $a \geq 2$, $a < p$, and $p = ab$.
+    \end{quote}
+    To simplify the above quote, there does not exist a pair of natural numbers such that when one of them is a natural number $2 \leq a < p$, the other number multiplied by this number is $p$. \\
+    Since $a < p$, to achieve $ab = p$, it is impossible that $b = 1$. This successfully circumvents the limitation encountered in expression (a), qualifying expression (b) as the correct solution. This expression does successfully describe the definition of prime number $p$:
+    \begin{quote}
+        The only pair of natural number whose product is prime $p$ is $(1, p)$
+    \end{quote}
+    By demonstrating that there exist no pair of natural number whose product is $p$ if one of the element is exclusively between $1$ and $p$.
+\end{ln-example}
+This is an interesting discussion, as the question presented above has in fact been regraded!
+
+\section{Reading and Negation}
+\subsection{Meaning of Negation}
+If a proposition $P$ is false, its negation is true. \\
+This inspires another approach for proofs (proof by contradiction), which usually work for simpler prompts since their contradictions would only be simpler to prove, if provided that this method is optimal to begin with. \\
+However, when $P$ appears to be a more complicated proposition involving other smaller propositions, we should look for some way to make our understanding of it more concise. \\
+A logical law, called the \textbf{De Morgan's Laws}, facilitates us with such matter:
+\begin{ln-axiom}{De Morgan's Law}{}
+    The De Morgan's Law states the two following logical equivalences:
+    \[\neg (P \land Q) \equiv (\neg P \lor \neg Q)\]
+    \[\neg (P \lor Q) \equiv (\neg P \land \neg Q)\]
+\end{ln-axiom}
+In fact, negations of propositions involving quantifiers follow analogous laws, due to the similarity of universal quantifier with conjunction and existential quantifier with disjunction:
+\begin{ln-axiom}{Extension of De Morgan's Law}{}
+    Based on the similiarity of quantifiers with operations of propositions:
+    \[\neg (\forall x P(x)) \equiv (\exists x \neg P(x))\]
+    \[\neg (\exists x P(x)) \equiv (\forall x \neg P(x))\]
+\end{ln-axiom}
+These above equivalences can provide flexibility in coming mathematical proofs.
+
+\subsection{Complex Examples of Negation}
+Let us discuss the example attached on the lecture notes from Summer 2022.
+\begin{center}
+    \textbf{Prompt 1: Write a proposition that states, ``there are at least three distinct integers $x$ that satisfies $P(x)$.}
+\end{center}
+And the proposition our textbook provided was:
+\[\exists x \exists y \exists z (x \neq y \neq z \land P(x) \land P(y) \land P(z))\]
+\begin{ln-think}{Proposition for Prompt 1}{}
+    Let us analyze this proposition via some translation:
+    \begin{align*}
+        &\exists x \exists y \exists z (x \neq y \land x \neq z \land y \neq z \land P(x) \land P(y) \land P(z)) \\
+        &\rightarrow \text{``there exists a x, y, z'' such that} \\
+        & \text{``x, y, z are not equal to each other, and all of $P(x), P(y), P(z)$ holds''.} \\
+        &\rightarrow \text{``there exists at least one possible combination of three distinct integers''} \\
+        & \text{such that ``all of $P(x), P(y), P(z)$ holds``.} \\
+        &\rightarrow \text{there are at least three distinct integers $x$ that satisfies $P(x)$.}
+    \end{align*}
+\end{ln-think}
+In the above translation process, we first analyzed each phrases independently. Then, having each clauses translated, we move on to combine them together semantically. \\
+For example, the fact that the three integers $x$, $y$, $z$ are not equal to each other means they are distinct, and so we may summarize the quantifying clause from ``there exists a $\dots$'' into ``there exists at least one combination of three integers such that $\dots$''. \\
+This helps us imply that, if there exists at least one combination, then there are at least three integers to satisfy $P(x)$. \\
+This logic of inter-language and inter-context translation allows us to convert a proposition from its mathematical form to pure English text. It should be familiarized via practice and experience. \\
+For purposes of practicing, let us analyze another proposition and attempt to translate it:
+\[\exists x \exists y \exists z \forall d (P(d) \implies d = x \lor d = y \lor d = z)\]
+And in the following portion, let us perform again the same procedure of directly translating the proposition from symbols to English, and then rephrase each English clause into more concise descriptions.
+\begin{ln-think}{Explain this proposition for me, will you?}{}
+    Translate the proposition to English: $\exists x \exists y \exists z \forall d (P(d) \implies d = x \lor d = y \lor d = z)$
+    \tcblower
+    This proposition first has a quantifying clause that states: ``there exists a $x$, $y$, and $z$ for all values $d$``, or that there exists a set of three numbers $x$, $y$ and $z$ for all values $d$. \\
+    The last clause is an implication stating: ``if $P(d)$ holds true, then $d = x \lor d = y \lor d = z$''. That means $d$ is equal to either $x$, $y$, or $z$. So, there exists three numbers out of all possible values in the universe such that if $P(d)$ holds, then $d$ is one of the three numbers we observed before. \\
+    Meanwhile, we are not provided that $x$, $y$, and $z$ are distinct values, so there are at most three values for $d$ such that $P(d)$ holds.\\
+    Let us switch a perspective and view the contrapositive of the later clause and verify our previous interpretation. If $d$ is equal to neither of $x$, $y$, $z$, then $P(d)$ will not hold. \\
+    Assuming they are distinct, this statement would provide that if $d$ is equal to neither of some (up to three) distinct numbers, $P(d)$ will not hold. \\
+    Therefore, the proposition is stating ``\textbf{$P(d)$ holds for at most three distinct integers}''.
+\end{ln-think}
+Here is one demonstration about conjunctions. \\
+By performing conjunction for the propositions above: that $P(d)$ holds for at least and at most 3 integers, we successfully create a new proposition that states ``$P(d)$ holds for exactly 3 integers``. \\
+Mathematical propositions that come with limits, or quantifying clauses, for some other proposition are useful in helping us locate a range of values for which a condition holds. 
+
+If we combine propositions that hold for same conditions but with different quantified limits, we managed to combine the limits together and form some tighter statement providing a proposition with tighter limitations.

@@ -1,2 +1,93 @@
-\chapter{Mathematical Definitions for Functions and Signals}
-Hello
+\chapter{Mathematical Definitions for Functions}
+
+\section{Assignment and Declaration of Function}
+In the realm of mathematics, we seek for a unified approach to formally define mathematical objects like functions.
+Mathematical objects are objects with mathematical properties, or, ``things'' that exist in mathematics.
+Previously, we discussed a few way to define and denote a function. In this section, let us discuss these idea more.
+
+As spoken before, a function is fundamentally a relationship between sets.
+A function denoted as $f: X \rightarrow Y$ has a name $f$, domain $X$, and codomain $Y$; furthermore, it matches each element of $X$ to one and only one element in $Y$.
+And once again, this has two implications:
+\begin{enumerate}
+    \item Each element $x$ of $X$ must have a corresponding value in the codomain of function $Y$.
+    \item Each element $x$ of $X$ cannot have multiple corresponding value in the codomain of function $Y$.
+\end{enumerate}
+Previously, in Algebra II, you may have learned such a thing called ``Vertical Line Test'', which asserts that the graph of a function on a 2-dimensional space, with the horizontal axis hosting the domain and vertical axis the codomain, must have no more than one intersection than any vertical line.
+In the sense of usual single-variate functions $y = f(x)$, it is that one value of $x$ can only have one value of corresponding $y$. For example, $f(x) = x^2$ is a function that only has one intersection with any vertical line.
+
+To declare the relationship that a function hosts between its domain and codomain: we define a function with the following prototype:
+\[
+    \forall x \in X, f(x) = {\rm expression\ in\ x}
+\]
+This definition of the function is also said to be \textbf{declarative}, because it declares properties of the function without explaining the precise algorithms (or computer instructions) of doing so.
+
+\section{Different Expressions of A Function: Graph, Table, Procedure}
+Functions may also be expressed in several different ways.
+
+\subsection{Graph}
+For a function $f: X \rightarrow Y$, its relationship provides us as many elements in $X$ as the number of corresponding values across domain and codomain: $(x, y)$, or in other words $(x, f(x))$.
+Meanwhile, we may notice that the Cartesian product $X \times Y$ hosts the set of all possible pairings between elements of $X$ and elements of $Y$:
+\[
+    X \times Y = \{(x, y) | x \in X, y \in Y\}
+\]
+And the function $f$ instead hosts such set of tuples:
+\[
+    \{(x, f(x)) | x \in X\} \subset X \times Y
+\]
+We call this above set of tuples containing the function's mapping the \textbf{graph} of $f$, or, ${\rm graph}(f)$.
+Therefore, a function can also be defined as a subset of the Cartesian product of its domain and codomain.
+
+\subsection{Table}
+We may also express a function in a table that maps an input value to an output value.
+This is perhaps the most primordial, non-mathematical method of exhibiting a function.
+For example, for a function $f: \mathbb{R} \rightarrow \text{Set of student name}$ where the input value is a Student ID, we may write such function in a table as follows:
+\begin{center}
+    \begin{tabular}{c|c}
+        Domain: Student ID & Codomain: Student Names \\
+        \hline
+        3036594561 & John Doe \\
+        3036594562 & Jonathon Doe \\
+        $\vdots$ & $\vdots$ \\
+        3036595000 & Joe Dohn
+    \end{tabular}
+\end{center}
+
+\subsection{Procedure}
+A procedure is an algorithm that notes how a function can be computed using algorithmic notations.
+For example, to compute the factorial function, we may use the following instruction:
+\begin{algorithm}
+    \caption{A set of instructions for computing factorials}
+    \begin{algorithmic}
+        \Require $n \geq 0$
+        \Ensure $y = x!$
+        \State $y \gets 1$
+        \State $N \gets n$
+        \While{$N > 0$} \\
+            $y \gets y \times N$ \\
+            $N \gets N - 1$
+        \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+Such set of instruction also defines our function: instead of providing the mathematical abstractions,
+\[
+    \forall x \in \mathbb{N}_0, f(x) = x!
+\]
+it provides the precise instructions required for anyone (even a computer) to compute the function.
+Using procedures to define functions is otherwise known as an imperative assignment.
+
+\section{A Review of Composition}
+We can combine functions to create new functions. This mechanism is known as composition.
+Without assuming anything about the correspondence of different functions' domains and codomains, for two functions $f_1$ and $f_2$, we may write the composition of these functions as:
+\[
+    (f_2 \circ f_1)(x) = f_2(f_1(x))
+\]
+such that $f_2 \circ f_1$ becomes a function that accepts any element $x$ in the domain of $f_1$ and computes the above value.
+
+Note that, the fundamental requirement for such composition to be held is that the range of $f_1$ must eb a subset of the domain of $f_2$, such that the output of the first function $f_1$ is always within the domain of the second function $f_2$.
+So, to end with a more precise definition of composition:
+\begin{ln-define}{Composition of Function}{}
+    Assume $f_1: X \rightarrow Y$ and $f_2: X' \rightarrow Y'$, then a composition $f_3 = f_2 \circ f_1$ would be defined as a function $f_3: X \rightarrow Y'$ and declared as:
+    \[
+        \forall x \in X, f_3(x) = f_2(f_1(x))
+    \]
+\end{ln-define}

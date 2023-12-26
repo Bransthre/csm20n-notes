@@ -1,2 +1,103 @@
 \chapter{Set!}
-Hello
+
+\section{Fundamental Properties of Sets}
+As you may have guessed, in set theory, we mainly discuss a mathematical object called ``set``.
+\begin{ln-define}{Set}{}
+    A set is a collection of objects. \\
+    The mathematical objects that are members of a set are called elements. \\
+    Sets are normally expressed in the format of:
+    \[\{\text{element 1}, \text{element 2}, \dots, \text{element n}\}\]
+\end{ln-define}
+The symbol representing membership in a set works as follows:
+\begin{ln-symbol}{Membership Symbol}{}
+    If a mathematical object $x$ is a member of a set $A$, then we may mathematically express that $x \in A$. \\
+    Otherwise, for a mathematical object $y$ that does not belong to $A$, $y \notin A$.
+\end{ln-symbol}
+There are several more properties to sets:
+\begin{bindenum}
+    \item The size of a set is defined as the number of elements in it. This property of set is called \textbf{cardinality}. The cardinality of a set $A$ can be mathematically denoted as $|A|$.
+    \item The equality of a set is held when two sets have exactly same elements; order and repetition does not matter, albeit in computers, many implementations of sets already do not allow repetition. We call a set whose elements can be repeated a ``multiset''.
+    \item Sets whose cardinality are 0, also known as empty sets, are denoted as $\{\}$ as well as $\emptyset$. \\
+\end{bindenum}
+To denote a set of mathematical objects that all belong to some other set but suffices some property, we may utilize a notation called \textbf{set-builder notation}:
+\begin{ln-symbol}{Set-Builder Notation}{}
+    A set $A$ whose members all follow expression $exp$, and the terms of $exp$ all fit some list of conditions can be written as:
+    \[\{exp : \text{condition 1}, \dots, \text{condition n}\}\]
+    \tcblower
+    The colon above can be replaced by a vertical bar. Since we will be using vertical bars for other purposes in later chapters, a colon is perhaps the least abusive notation to play with. \\
+    But, to conform the formatting of official lecture notes, let us continue with vertical bars. \\
+    For example, the list of all rational numbers can be written as:
+    \[\Q = \bigg\{ \frac{p}{q} \bigg| p,q \in \R,\ q \neq 0 \bigg\}\]
+\end{ln-symbol}
+
+Some useful sets have names for the ease of references:
+\begin{center}
+    \begin{tabular}{c||c|c}
+        Notation & Name & Example Contents \\
+        \hline
+        $\mathbb{N}$ & Natural Numbers & $\{1, 2, \dots\}$ \\
+        $\mathbb{N}_0$ & Non-negative Integers & $\{0, 1, 2, \dots\}$ \\
+        $\mathbb{Z}$ & Integers & $\{\dots, -2, -1, 0, 1, 2, \dots\}$ \\
+        $\mathbb{R}$ & Real Numbers & $(-\infty, \infty)$ \\
+        $\mathbb{C}$ & Complex Numbers & $\{x + {\rm i} y | x, y \in \mathbb{R}\}$
+    \end{tabular}
+\end{center}
+
+\section{Relationships between Sets}
+We often compare sets in terms of their sizes and elements they contain. Out of these standards for comparison, we can define the relationship between a set and another larger set that contains all elements of the former as follows:
+\begin{ln-define}{Subset}{}
+    If every element of a set $A$ is also in a set $B$, then $A$ is a subset of $B$. \\
+    Mathematically, we write it as $A \subseteq B$. \\
+    Or, stating the equivalent in an opposite direction, $B \supseteq A$, and this would state $B$ as a superset of $A$.
+\end{ln-define}
+And a stricter similar relationship follows:
+\begin{ln-define}{Strict Subset}{}
+    If $A \subseteq B$ but $A$ excludes at least an element of $B$, then we say that $A$ is a strict subset (proper subset) of $B$. \\
+    Mathematically denoted, $A \subset B$.
+\end{ln-define}
+Utilizing the definitions above, we may form some observations:
+\begin{bindenum}
+    \item The empty set is a proper subset of any nonempty set.
+    \item The empty set is a subset for any set, including itself's.
+    \item While every set is not a proper subset of itself, every set is a subset of itself.
+\end{bindenum}
+While we compare sets based on their members, we can also ``add``, create sets based on the members of two sets. There are two ways of doing so, being \textbf{intersection} and \textbf{union}.
+\begin{ln-define}{Intersection}{}
+    The intersection of set $A$ and $B$, written as $A \cap B$, is the set containing all elements that are both in A and B. \\
+    In set builder notation:
+    \[A \cap B = \{x | x \in A \land x \in B\}\]
+\end{ln-define}
+\begin{ln-define}{Union}{}
+    The union of set $A$ and $B$, written as $A \cup B$, is the set of all elements contained in either $A$ or $B$. \\
+    In set builder notation, it pronounces very similarly with the notation for intersections:
+    \[A \cup B = \{x | x \in A \lor x \in B\}\]
+\end{ln-define}
+Regarding the way empty sets work in the above arithmetic, for an arbitrary set $A$:
+\begin{bindenum}
+    \item $A \cap \emptyset = \emptyset$
+    \item $A \cup \emptyset = A$
+\end{bindenum}
+At last, let us regard the notion of \textbf{``complements'', the difference between sets}.
+\begin{ln-define}{Complement}{}
+    Imagine the arithmetic of sets to work solely upon their members, and let the difference of sets be defined such that:
+    \[A - B = A \backslash B = \{x \in A | x \notin B\}\]
+    This set $A \ B$ is called the set difference between A and B, or alternatively, the relative complement of B in A.
+\end{ln-define}
+This also indicates that the ``subtraction arithmetic'' for sets is not commutative. Using empty sets as examples:
+\begin{bindenum}
+    \item $A\ \backslash\ \emptyset = A$
+    \item $\emptyset\ \backslash\ A = \emptyset$
+\end{bindenum}
+And the last arithmetic is the \textbf{``multiplication of sets'': Cartesian Products}.
+\begin{ln-define}{Cartesian Products}{}
+    The Cartesian Product (cross product) of sets $A$ and $B$ is defined such that:
+    \[A \times B = \{(a, b)\ |\ a \in \R, b \in \R\}\]
+\end{ln-define}
+And last but not least, we have mathematical operations that generate a set of sets (nested) based on other sets:
+\begin{ln-define}{Power Set}{}
+    The power set of $S$ can be written as:
+    \[\wp (S) = \{P | P \subseteq S\}\]
+    as one of its various denotations, the one on lecture note using a Weierstrass P. \\
+    The power set of a set is the set of all of its possible subsets.
+\end{ln-define}
+In addition, if the cardinality of $S$ in the above definition is $|S| = k$, then we can state that $|\mathbb{P} (S)| = 2^k$. This will be an explored notion as we discuss a discrete math topic ``Counting'' in near future.
