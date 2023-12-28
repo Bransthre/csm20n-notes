@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.26)  26 DEC 2023 11:49
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.26)  28 DEC 2023 21:40
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1113,62 +1113,68 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] (./subnotes/acknowledgements.tex) [2] (./main.toc [3
 
-] [4])
+] [4] [5] [6])
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
- [5] [6
+ [7] [8
 
 ] (./subnotes/old_ln01.tex
 Chapter 1.
-) [7
+) [9
 
 ] (./subnotes/old_ln02.tex
 Chapter 2.
-) [8
+) [10
 
 ] (./subnotes/old_ln03.tex
 Chapter 3.
-) [9
+) [11
 
 ] (./subnotes/old_ln04.tex
 Chapter 4.
-) [10
+) [12
 
 ] (./subnotes/old_ln05.tex
 Chapter 5.
-) [11
+) [13
 
 ] (./subnotes/old_ln06.tex
 Chapter 6.
-) [12
+) [14
 
 ] (./subnotes/old_ln07.tex
 Chapter 7.
-) [13
+) [15
 
 ] (./subnotes/old_ln08.tex
 Chapter 8.
-) [14
+[16
 
-] (./subnotes/old_ln09.tex
+]
+Underfull \hbox (badness 10000) in paragraph at lines 39--41
+
+ []
+
+[17]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 95.
+ (c:/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [18]) [19] (./subnotes/old_ln09.tex
 Chapter 9.
-) [15
+) [20
 
-] [16
+] [21
 
 ] (./subnotes/ln00.tex
 Chapter 10.
 File: figs/ln00/riemann-sums-area-distances.png Graphic file (type bmp)
 <figs/ln00/riemann-sums-area-distances.png>
-[17
+[22
 
-] [18] [19] [20]) [21] (./subnotes/ln01.tex
+] [23] [24] [25]) [26] (./subnotes/ln01.tex
 Chapter 11.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 18.
-(c:/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
+
 Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
  []
@@ -1176,21 +1182,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
 Underfull \vbox (badness 1122) has occurred while \output is active []
 
- [22
+ [27
 
 ]
 Underfull \vbox (badness 2326) has occurred while \output is active []
 
- [23]) [24] (./subnotes/ln02.tex
+ [28]) [29] (./subnotes/ln02.tex
 Chapter 12.
-[25
+[30
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 75--78
 
  []
 
-[26] [27]
+[31] [32]
 Underfull \hbox (badness 10000) in paragraph at lines 139--141
 
  []
@@ -1210,20 +1216,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 158--161
 
  []
 
-[28] [29] [30]) [31] (./subnotes/ln03.tex
+[33] [34] [35]) [36] (./subnotes/ln03.tex
 Chapter 13.
 
 Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
-[32
+[37
 
-]) [33] [34
+]) [38] [39
 
 ] (./subnotes/ln04.tex
 Chapter 14.
-[35
+[40
 
 ]
 File: figs/ln03/sound-time-pressure.png Graphic file (type bmp)
@@ -1234,98 +1240,99 @@ File: figs/ln03/dunminghuang-grey.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[36] [37] [38]) [39] (./subnotes/ln05.tex
+[41] [42] [43]) [44] (./subnotes/ln05.tex
 Chapter 15.
-[40
+[45
 
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 59.
- [41]) [42] (./subnotes/ln06.tex
+ [46]) [47] (./subnotes/ln06.tex
 Chapter 16.
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 12.
 (c:/texlive/2022/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [43
-
-] [44]) [45] (./subnotes/ln07.tex
-Chapter 17.
-) [46
-
-] (./subnotes/ln08.tex
-Chapter 18.
-) [47
-
-] (./subnotes/ln09.tex
-Chapter 19.
 ) [48
 
-] [49
+] [49]
+File: figs/ln06/example_block_diagram.png Graphic file (type bmp)
+<figs/ln06/example_block_diagram.png>
+File: figs/ln06/example_feedback_block.png Graphic file (type bmp)
+<figs/ln06/example_feedback_block.png>
+) [50] (./subnotes/ln07.tex
+Chapter 17.
+[51
 
-] (./subnotes/ln09.tex
-Chapter 20.
-) [50
-
-] (./subnotes/ln10.tex
-Chapter 21.
-) [51
-
-] (./subnotes/ln11.tex
-Chapter 22.
-) [52
-
-] (./subnotes/ln12.tex
-Chapter 23.
-) [53
-
-] (./subnotes/ln13.tex
-Chapter 24.
+] [52]) [53] (./subnotes/ln08.tex
+Chapter 18.
 ) [54
 
-] (./subnotes/ln14.tex
-Chapter 25.
-) [55
-
-] (./subnotes/ln15.tex
-Chapter 26.
+] [55] (./subnotes/ln09.tex
+Chapter 19.
 ) [56
 
-] (./subnotes/ln16.tex
-Chapter 27.
-) [57
+] [57
 
-] [58
+] (./subnotes/ln10.tex
+Chapter 20.
+) [58
 
-] (./subnotes/ln17.tex
-Chapter 28.
+] (./subnotes/ln11.tex
+Chapter 21.
 ) [59
 
-] (./subnotes/ln18.tex
-Chapter 29.
+] (./subnotes/ln12.tex
+Chapter 22.
 ) [60
 
-] (./subnotes/ln19.tex
-Chapter 30.
+] (./subnotes/ln13.tex
+Chapter 23.
 ) [61
 
-] (./subnotes/ln20.tex
-Chapter 31.
+] (./subnotes/ln14.tex
+Chapter 24.
 ) [62
 
-] (./subnotes/ln21.tex
-Chapter 32.
+] (./subnotes/ln15.tex
+Chapter 25.
 ) [63
+
+] (./subnotes/ln16.tex
+Chapter 26.
+[64
+
+]) [65] [66
+
+] (./subnotes/ln17.tex
+Chapter 27.
+) [67
+
+] (./subnotes/ln18.tex
+Chapter 28.
+) [68
+
+] (./subnotes/ln19.tex
+Chapter 29.
+) [69
+
+] (./subnotes/ln20.tex
+Chapter 30.
+) [70
+
+] (./subnotes/ln21.tex
+Chapter 31.
+) [71
 
 ] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 433570CCFE27ECD495770B0E96B5DD39;11953.
+(rerunfilecheck)             Checksum: 03011C03384013A2753E12FC5E574347;23975.
  ) 
 Here is how much of TeX's memory you used:
- 64029 strings out of 475882
- 1617381 string characters out of 5806027
- 2240963 words of memory out of 5000000
- 84061 multiletter control sequences out of 15000+600000
+ 64081 strings out of 475882
+ 1618460 string characters out of 5806027
+ 2253726 words of memory out of 5000000
+ 84112 multiletter control sequences out of 15000+600000
  504833 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  114i,15n,145p,850b,1626s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (63 pages).
+Output written on main.pdf (71 pages).

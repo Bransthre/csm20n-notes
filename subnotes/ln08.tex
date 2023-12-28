@@ -1,2 +1,47 @@
-\chapter{Linear}
-Hello
+\chapter{Infinite State Machine}
+
+\section{Definition of ISM}
+
+\subsection{Mathematical Abstraction of ISM}
+An infinite state machine is fundamentally a state machine that has infinite possible states.
+These machines have just the same components as a usual state machine does, except the spaces $States$, $Inputs$, $Outputs$ now become:
+\[
+    \begin{cases}
+        States &= \R^n \\
+        Inputs &= \R^m \\
+        Outputs &= \R^k
+    \end{cases}
+\]
+for some arbitrary $n$, $m$, $k$.
+
+For the sake of terminology, let us also discuss the dimensionality of such systems.
+A system that receives one-dimensional inputs and provide one-dimensional outputs is known as a single-input, single-output (SISO) system.
+On the opposite side is a multiple-input, multiple-output (MIMO) system, which is when $m > 1$ and $k > 1$.
+This knowledge wouldn't really contribute a lot to your knowledge of the syllabus content.
+
+\subsection{Composition of ISM}
+Remember that an infinite state machine is still the 5-components tuple of:
+\[
+    M = (States, Inputs, Outputs, update, initialState)
+\]
+then, besides the above listed change, we should also observe that the $update$ function can now be defined as follows:
+\[
+    update: \R^n \times \R^m \rightarrow \R^n \times \R^k
+\]
+as it takes in an input signal, a current state, and outputs an output signal and a current state.
+
+So, just as any system, an infinite state machine has the necessary components to build an update loop. That is, an equation that decides the next state of the system:
+\[
+    \forall n \in \mathbb{Z}, n \geq 0, s(n+1) = nextState(s(n), x(n))
+\]
+and an equation that determines the output system
+\[
+    \forall n \in \mathbb{Z}, n \geq 0, y(n) = output(s(n), x(n))
+\]
+The composition of the output loop builds what we call the ``state-space model'' of our system.
+
+\subsection{Involvement of Time Measurement}
+Note that the unit of time in our machine's state evolution is still ``step''.
+Across each ``step'', some input is provided to the machine for a stepwide update.
+And, because step is a discrete unit of time (you can only have a nonnegative integer amount of steps passed in a system), step becomes what we call the ``time index'' of the system, which is the identifier of time for in-machine events.
+When the update rules ($nextState$ and $output$) of the system doesn't change across steps, we call it a \textbf{time-invariant} system.

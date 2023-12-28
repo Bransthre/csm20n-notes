@@ -1,2 +1,114 @@
-\chapter{States}
-Hello
+\chapter{State Machines}
+
+\section{Structure of State Machines}
+We refer to the current status of a system using the word ``state''.
+In daily English usage, we may say, ``the status of Ryan is `drunk' (albeit that rarely occurs)'', ``the state of Winston is that he is insane'', etc.
+In systems, we may instead say the state of a system is represented by some vector. For example, the state of a robot dog may be a vector involving the position of its legs, head, body, etc.
+Such characterizations are called ``state-space models'': that is, models' current situation are specified by a vector-representable ``state''.
+
+Let us summarize all of these systems, models, robots, planes$\dots$ anything that uses a state to represent its current situation as a ``state machine''.
+A state machine has a mathematical prototype just as any systems.
+The input and output signals of a state machine are called ``event streams'', or put blatantly it is a sequence of signals that have occurred (and therefore a stream of events, event stream)
+\[
+    {EventStream}: \mathbb{N}_0 \rightarrow Symbols
+\]
+
+A stream of event is a numerically ordered sequence of inputs and outputs that occur throughout the specified timesteps. In this case it could be represented like:
+\begin{align*}
+    EventStream(0) &= {\rm Sleeping} \\
+    EventStream(1) &= {\rm Awake} \\
+    EventStream(2) &= {\rm Sleeping} \\
+    EventStream(3) &= {\rm Sleeping} \\
+    &\vdots
+\end{align*}
+where ``Sleeping'' and ``Awake'' are two different symbols that represent the occuring event in the event stream at the input timestep.
+
+A state machine takes the mathematical prototype of:
+\[
+    StateMachine = (States, Inputs, Outputs, update, initalState)
+\]
+meaning, a state machine is composed of five things:
+\begin{center}
+    \begin{tabular}{c||c}
+        Component Name & Component Item \\
+        \hline
+        States & A set of all possible states for the machine \\
+        Inputs & A set of all possible inputs for the machine \\
+        Outputs & A set of all possible outputs for the machine \\
+        update & A function about changes in state and output of the machine given input and current state \\
+        initialState & The initial state of the machine; how the machine starts up
+    \end{tabular}
+\end{center}
+
+This mathematical prototype uses sets and functions to model (represent) a state machine.
+Then, the event streams of a state machine are defined as follows:
+\begin{align*}
+    InputSignals &= [\mathbb{N}_0 \rightarrow Inputs] \\
+    OutputSignals &= [\mathbb{N}_0 \rightarrow OutputSignalsputs]
+\end{align*}
+
+One other interesting subtlety here is that we don't necessarily say the StateMachine moves through time. Instead, we say that the machine ``evolves'' (changes its states, outputs) over steps (unit of time for new changes in input).
+Alternatively, we say the machine evolves through timesteps. This bodes similarity to the pagerank (or pump system) eigenanalysis we processed in previous chapters.
+
+\subsection{Updates in State Machine}
+An update in a state machine is a function that provides the output signal and next state of a machine provided the input signal and the current state of a machine.
+Particularly, we can also mathematically state that:
+\[
+   ( s(n+1), y(n)) = update(s(n), x(n))
+\]
+
+How do we piece these components in the state machine together?
+Or, how does a state machine function and why is the update function necessary?
+Remember that state machines, or systems, are abstractions of a process that occurs in real life and changes upon occurring things.
+For example, the human brain can be a state machine whose states are the chemicals in the brain, and outputs are the feelings we usually perceive.
+State machines operate along the following procedure:
+\begin{enumerate}
+    \item State machine starts up (we are born into this cruel world). The initial state of the brain is not known to science, but we called it the $InitialState$
+    \item Now, forever in your life, at the unit of miliseconds:
+    \subitem Your brain perceives an input signal (can be a color, a noise, or memes)
+    \subitem Your brain's inner systems process this signal, and eventually, the state of your brain's chemicals change due to this input. Your brain also outputs a reaction. This is what we called an update.
+    \subitem Your brain outputs, and the state of your brain changes. You continue within this loop as input signals continue to trigger updates in your brain.
+    \item You will never escape the circle of life until you die.
+\end{enumerate}
+
+The indented aspects of the above workflow that is associated with an input-update pair is also called a ``reaction''.
+Additionally, whenever there are no input signals (which occurs not for the human brain but for other machines), there would of course not be any output signals. We call this a stutter.
+
+\subsection{Minecraft as A State Machine}
+Let's reinforce the above logic further with Minecraft as an example of a state machine.
+First, let's briefly define the components of Minecraft as aspects of a state machine:
+\begin{enumerate}
+    \item[] States: The current state of creatures in blocks in your Minecraft world, player status, object durabilities
+    \item[] Inputs: Keyboard inputs
+    \item[] Outputs: Game-player interactions that are not state of the game, such as sound effects.
+    \item[] initialState: The state of the game when world starts
+    \item[] update: Minecraft's code about how the state of your game changes whenever you do something.
+\end{enumerate}
+
+Now, let's do an input signal that mines a diamond. Then the following update loop occurs:
+\begin{enumerate}
+    \item The input signal and the current state is considered by Minecraft's code.
+    \item A diamond is digged, so the current state changes based on that (player gets a diamond, some experience values, and a diamong block is removed from the game).
+    \item A diamond digging sound effect and experience gaining sound effect is outputted. This is the output signal
+\end{enumerate}
+This update loop occurs for any input signal we provide in Minecraft.
+
+\section{Finite State Machines}
+Finite State Machines, otherwise abbreviated as FSM, is a state machine whose amount of state is finite.
+For example, if we use a state machine to represent the status of a student whether the student is sleeping or not, then our state machine has a finite amount of state (either the student is ``Awake'', or ``Asleep'').
+Then, this state machine is a finite state machine.
+Although we discuss finite state machines here, given that the interpretation of finite state machines is in CS61C's syllabus, not EE20N's, we will not go over the construction of a FSM diagram.
+
+\subsection{Formalizing Updates as State Transition}
+Previously, we mentioned the process at which machine state changes and output is generated to be an ``update''.
+This state-to-state change is otherwise called a ``state transition'', which is by its name the transition of states.
+In certain fields, we would state the transition in a tuple:
+\[
+    (CurrentState, InputSignal, NextState, OutputSignal)
+\]
+alternatively, you may think of the InputSignal as an action done to the system, and the OutputSignal as some feedback from the system that talks about the transition (for example, is this transition good? harmful to the system?).
+
+Several things may occur with a transition.
+For example, we may have a transition whose $CurrentState$ and resulting $NextState$ is the same.
+In Minecraft, this can simply be pausing the game, where the $InputSigna$ doesn't change the gamestate.
+This type of transition is called a ``loop'', because the provided input signal has us stuck in the same state despite having performed an action.

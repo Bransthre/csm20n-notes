@@ -80,24 +80,38 @@ A block diagram is a visual summary of system using blocks to represent the comp
 Usually, block diagrams are presented on design blueprints and research papers to help readers visually summarize the schematics of a large system.
 Let's use the following block diagram, which protrays the system:
 \[
-    \forall t \in \mathbb{R}, S_1(x) = y_1(t) = x(t)^2 + 2x(t) + \frac{1}{x(t)}
+    \forall t \in \mathbb{R}, S_1(x)(t) = y_1(t) = x(t)^2 + 2x(t) + \frac{1}{x(t)}
 \]
 as an example:
-[TODO: insert figure]
 
-[TODO: more explanation]
+\begin{center}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/ln06/example_block_diagram.png}
+        \caption{Example block diagram of the above memoryless system.}
+    \end{figure}
+\end{center}
+
+In a block diagram, each block resembles one smaller component of the system (which can also be a system) that maps the input signal into some intermediate form (which can also be an output signal).
+Ideally, each block only resembles one function.
+Then, throughout the block diagram, the outputs of each block become the input of its connected blocks, flowing from left to right.
+It provides us a graphical comprehension of the system we deal with.
 
 Occassionally, our systems would require memory, which means that we may rely on information about the past input signals.
 For example, such system:
 \[
-    \forall t \in \mathbb{R}, S_2(x) = y_2(t) = y_2(t - 1) + \frac{1}{x(t)}
+    \forall t \in \mathbb{R}, S_2(x)(t) = y_2(t) = y_2(t - 1) + \frac{1}{x(t)}
 \]
 The connection from a previous output state into a current output state's computation is known as a \textbf{feedback}.
 This name is intuitive in the sense that whenever a feedback occurs, it is that a previous output state feeds back to another current output state (and this can be either additive or subtractive, sometimes even multiplicative).
 Let us see how a block diagram would work with this information:
-[TODO: insert figure]
+\begin{center}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/ln06/example_feedback_block.png}
+        \caption{Example block diagram of the above memory system.}
+    \end{figure}
+\end{center}
 
 In a block diagram, feedbacks are portrayed by connections between the output state per se and the associated computing blocks.
-
-\subsection{Fixed Point}
-Hello.
+In the above diagram, the output signal's output value, $y(t)$, will be fed into the system's adder block in the next timestep $t+1$ to achieve the recrusive formula above.
