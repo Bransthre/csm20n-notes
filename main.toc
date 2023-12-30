@@ -107,88 +107,87 @@
 \contentsline {subsection}{\numberline {18.1.3}Involvement of Time Measurement}{55}{subsection.18.1.3}%
 \contentsline {chapter}{\numberline {19}Linear Systems}{56}{chapter.19}%
 \contentsline {section}{\numberline {19.1}Definition of Linear Systems}{56}{section.19.1}%
-\contentsline {subsection}{\numberline {19.1.1}Impulse Response}{56}{subsection.19.1.1}%
-\contentsline {section}{\numberline {19.2}One-dimensional SISO Systems}{56}{section.19.2}%
-\contentsline {section}{\numberline {19.3}Multidimensional SISO Systems}{56}{section.19.3}%
-\contentsline {section}{\numberline {19.4}Multidimensional MIMO Systems}{56}{section.19.4}%
-\contentsline {section}{\numberline {19.5}Linear Input-output Function}{56}{section.19.5}%
-\contentsline {part}{IV\hspace {1em}Signal Processing}{57}{part.4}%
-\contentsline {chapter}{\numberline {20}It's Time to Get a Little Complex}{58}{chapter.20}%
-\contentsline {section}{\numberline {20.1}Review of Imaginary Numbers}{58}{section.20.1}%
-\contentsline {subsection}{\numberline {20.1.1}Definition of Imaginary Numbers}{58}{subsection.20.1.1}%
-\contentsline {subsection}{\numberline {20.1.2}Arithmetics of Imaginary Numbers}{58}{subsection.20.1.2}%
-\contentsline {section}{\numberline {20.2}Review of Complex Numbers}{58}{section.20.2}%
-\contentsline {subsection}{\numberline {20.2.1}Definition of Complex Numbers}{58}{subsection.20.2.1}%
-\contentsline {subsection}{\numberline {20.2.2}Arithmetics of Complex Numbers}{58}{subsection.20.2.2}%
-\contentsline {section}{\numberline {20.3}Trigonometric Representation of Complex Numbers}{58}{section.20.3}%
-\contentsline {subsection}{\numberline {20.3.1}Exponentials}{58}{subsection.20.3.1}%
-\contentsline {subsection}{\numberline {20.3.2}Polar Coordinates}{58}{subsection.20.3.2}%
-\contentsline {chapter}{\numberline {21}Frequency, Phase, Domain}{59}{chapter.21}%
-\contentsline {section}{\numberline {21.1}Frequency Decomposition}{59}{section.21.1}%
-\contentsline {section}{\numberline {21.2}Phase}{59}{section.21.2}%
-\contentsline {section}{\numberline {21.3}Spatial Frequency}{59}{section.21.3}%
-\contentsline {section}{\numberline {21.4}Periodic and Finite Signals}{59}{section.21.4}%
-\contentsline {chapter}{\numberline {22}Fourier Expansion: Infinite Terms}{60}{chapter.22}%
-\contentsline {section}{\numberline {22.1}Fourier Series}{60}{section.22.1}%
-\contentsline {subsection}{\numberline {22.1.1}Purpose and Definition}{60}{subsection.22.1.1}%
-\contentsline {subsection}{\numberline {22.1.2}Fourier Series Approximation and Convergence}{60}{subsection.22.1.2}%
-\contentsline {subsection}{\numberline {22.1.3}Uniqueness of Fourier Series}{60}{subsection.22.1.3}%
-\contentsline {subsection}{\numberline {22.1.4}Approximations to Images}{60}{subsection.22.1.4}%
-\contentsline {section}{\numberline {22.2}Discrete-time Signals}{60}{section.22.2}%
-\contentsline {subsection}{\numberline {22.2.1}Periodicity}{60}{subsection.22.2.1}%
-\contentsline {subsection}{\numberline {22.2.2}Discrete-Time Fourier Series}{60}{subsection.22.2.2}%
-\contentsline {chapter}{\numberline {23}Linear Time-Invariant Systems}{61}{chapter.23}%
-\contentsline {section}{\numberline {23.1}Time Invariance}{61}{section.23.1}%
-\contentsline {section}{\numberline {23.2}Linearity of System}{61}{section.23.2}%
-\contentsline {section}{\numberline {23.3}Linearity and Time-Invariance}{61}{section.23.3}%
-\contentsline {chapter}{\numberline {24}Frequency Response and Fourier Series}{62}{chapter.24}%
-\contentsline {section}{\numberline {24.1}Finding and Using Frequency Response}{62}{section.24.1}%
-\contentsline {subsection}{\numberline {24.1.1}Introduction}{62}{subsection.24.1.1}%
-\contentsline {subsection}{\numberline {24.1.2}Linear Difference and Differential Equations}{62}{subsection.24.1.2}%
-\contentsline {subsection}{\numberline {24.1.3}Fourier Series with Complex Exponentials}{62}{subsection.24.1.3}%
-\contentsline {subsection}{\numberline {24.1.4}Solving Coefficients of Fourier Series}{62}{subsection.24.1.4}%
-\contentsline {subsection}{\numberline {24.1.5}Frequency Response and Fourier Series}{62}{subsection.24.1.5}%
-\contentsline {section}{\numberline {24.2}Frequency Response of Composite Systems}{62}{section.24.2}%
-\contentsline {subsection}{\numberline {24.2.1}Cascade Connection}{62}{subsection.24.2.1}%
-\contentsline {subsection}{\numberline {24.2.2}Feedback Connection}{62}{subsection.24.2.2}%
-\contentsline {chapter}{\numberline {25}Introduction to Filtering}{63}{chapter.25}%
-\contentsline {section}{\numberline {25.1}Convolution}{63}{section.25.1}%
-\contentsline {subsection}{\numberline {25.1.1}Convolution Sum and Convolution Integral}{63}{subsection.25.1.1}%
-\contentsline {subsection}{\numberline {25.1.2}Impulses}{63}{subsection.25.1.2}%
-\contentsline {subsection}{\numberline {25.1.3}Weighted Sum of Delta Functions}{63}{subsection.25.1.3}%
-\contentsline {section}{\numberline {25.2}Impulse Response}{63}{section.25.2}%
-\contentsline {subsection}{\numberline {25.2.1}Impulse Response and Convolution}{63}{subsection.25.2.1}%
-\contentsline {subsection}{\numberline {25.2.2}Impulse Response and Frequency Response}{63}{subsection.25.2.2}%
-\contentsline {chapter}{\numberline {26}Impulse Resopnse Filters}{64}{chapter.26}%
-\contentsline {section}{\numberline {26.1}Causality}{64}{section.26.1}%
-\contentsline {section}{\numberline {26.2}Finite Impulse Response Filters}{64}{section.26.2}%
-\contentsline {subsection}{\numberline {26.2.1}Definition of FIR Filters}{64}{subsection.26.2.1}%
-\contentsline {subsection}{\numberline {26.2.2}Design of FIR Filters}{64}{subsection.26.2.2}%
-\contentsline {subsection}{\numberline {26.2.3}Decibels}{64}{subsection.26.2.3}%
-\contentsline {section}{\numberline {26.3}Infinite Impulse Response Filters}{64}{section.26.3}%
-\contentsline {subsection}{\numberline {26.3.1}Definition of IIR Filters}{64}{subsection.26.3.1}%
-\contentsline {subsection}{\numberline {26.3.2}Design of IIR Filters}{64}{subsection.26.3.2}%
-\contentsline {section}{\numberline {26.4}Implementation of Impulse Response Filters}{65}{section.26.4}%
-\contentsline {subsection}{\numberline {26.4.1}Fundamental Policies and Terminologies}{65}{subsection.26.4.1}%
-\contentsline {subsection}{\numberline {26.4.2}Signal Flow Graphs}{65}{subsection.26.4.2}%
-\contentsline {part}{V\hspace {1em}Sampling and Fourier Transform}{66}{part.5}%
-\contentsline {chapter}{\numberline {27}The Four Fourier Transforms, Part I}{67}{chapter.27}%
-\contentsline {section}{\numberline {27.1}Continuous-Time Fourier Series}{67}{section.27.1}%
-\contentsline {section}{\numberline {27.2}Discrete Fourier Transform}{67}{section.27.2}%
-\contentsline {chapter}{\numberline {28}The Four Fourier Transforms, Part II}{68}{chapter.28}%
-\contentsline {section}{\numberline {28.1}Discrete-Time Fourier Transform}{68}{section.28.1}%
-\contentsline {section}{\numberline {28.2}Continuous-Time Fourier Transform}{68}{section.28.2}%
-\contentsline {chapter}{\numberline {29}A Discussion of Fourier Transform}{69}{chapter.29}%
-\contentsline {section}{\numberline {29.1}Fourier Transform vs. Fourier Series}{69}{section.29.1}%
-\contentsline {section}{\numberline {29.2}Properties of Fourier Transform}{69}{section.29.2}%
-\contentsline {chapter}{\numberline {30}Sampling and Reconstruction}{70}{chapter.30}%
-\contentsline {section}{\numberline {30.1}Sampling}{70}{section.30.1}%
-\contentsline {subsection}{\numberline {30.1.1}Sampling and Aliasing}{70}{subsection.30.1.1}%
-\contentsline {subsection}{\numberline {30.1.2}Perceived Pitch Experiment}{70}{subsection.30.1.2}%
-\contentsline {subsection}{\numberline {30.1.3}Aliasing Ambiguities}{70}{subsection.30.1.3}%
-\contentsline {section}{\numberline {30.2}Reconstruction}{70}{section.30.2}%
-\contentsline {subsection}{\numberline {30.2.1}Survey and Introduction}{70}{subsection.30.2.1}%
-\contentsline {subsection}{\numberline {30.2.2}Mathematical Assumptions of Reconstruction}{70}{subsection.30.2.2}%
-\contentsline {chapter}{\numberline {31}The Nyquist-Shannon Sampling Theorem}{71}{chapter.31}%
-\contentsline {section}{\numberline {31.1}The Statement of Theorem}{71}{section.31.1}%
-\contentsline {section}{\numberline {31.2}A Scratch of Its Proof}{71}{section.31.2}%
+\contentsline {subsection}{\numberline {19.1.1}Impulse Response}{58}{subsection.19.1.1}%
+\contentsline {section}{\numberline {19.2}Linear Systems with Different Input, Output Dimensions}{59}{section.19.2}%
+\contentsline {subsection}{\numberline {19.2.1}One-dimensional SISO Systems}{59}{subsection.19.2.1}%
+\contentsline {subsection}{\numberline {19.2.2}Multidimensional SISO Systems}{61}{subsection.19.2.2}%
+\contentsline {subsection}{\numberline {19.2.3}Multidimensional MIMO Systems}{63}{subsection.19.2.3}%
+\contentsline {part}{IV\hspace {1em}Signal Processing}{64}{part.4}%
+\contentsline {chapter}{\numberline {20}It's Time to Get a Little Complex}{65}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Review of Imaginary Numbers}{65}{section.20.1}%
+\contentsline {section}{\numberline {20.2}Review of Complex Numbers}{65}{section.20.2}%
+\contentsline {subsection}{\numberline {20.2.1}Definition of Complex Numbers}{65}{subsection.20.2.1}%
+\contentsline {section}{\numberline {20.3}Trigonometric Representation of Complex Numbers}{66}{section.20.3}%
+\contentsline {subsection}{\numberline {20.3.1}Exponentials}{66}{subsection.20.3.1}%
+\contentsline {subsection}{\numberline {20.3.2}Polar Coordinates}{67}{subsection.20.3.2}%
+\contentsline {chapter}{\numberline {21}Frequency, Phase, Domain}{68}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Frequency Decomposition}{68}{section.21.1}%
+\contentsline {subsection}{\numberline {21.1.1}Review: Frequency, Hertz and Radians}{68}{subsection.21.1.1}%
+\contentsline {subsection}{\numberline {21.1.2}Introduction via Signals as Musical Chords}{68}{subsection.21.1.2}%
+\contentsline {subsection}{\numberline {21.1.3}Timbre}{68}{subsection.21.1.3}%
+\contentsline {section}{\numberline {21.2}Phase}{69}{section.21.2}%
+\contentsline {section}{\numberline {21.3}Periodic and Finite Signals}{69}{section.21.3}%
+\contentsline {chapter}{\numberline {22}Fourier Expansion: Infinite Terms}{71}{chapter.22}%
+\contentsline {section}{\numberline {22.1}Fourier Series}{71}{section.22.1}%
+\contentsline {subsection}{\numberline {22.1.1}Purpose and Definition}{71}{subsection.22.1.1}%
+\contentsline {subsection}{\numberline {22.1.2}Fourier Series Approximation and Convergence}{72}{subsection.22.1.2}%
+\contentsline {section}{\numberline {22.2}Discrete-time Signals}{72}{section.22.2}%
+\contentsline {subsection}{\numberline {22.2.1}Periodicity}{73}{subsection.22.2.1}%
+\contentsline {subsection}{\numberline {22.2.2}Discrete-Time Fourier Series}{73}{subsection.22.2.2}%
+\contentsline {chapter}{\numberline {23}Linear Time-Invariant Systems}{74}{chapter.23}%
+\contentsline {section}{\numberline {23.1}Time Invariance}{74}{section.23.1}%
+\contentsline {section}{\numberline {23.2}Linearity of System}{74}{section.23.2}%
+\contentsline {section}{\numberline {23.3}Linearity and Time-Invariance}{75}{section.23.3}%
+\contentsline {chapter}{\numberline {24}Frequency Response and Fourier Series}{77}{chapter.24}%
+\contentsline {section}{\numberline {24.1}Finding and Using Frequency Response}{77}{section.24.1}%
+\contentsline {subsection}{\numberline {24.1.1}Introduction}{77}{subsection.24.1.1}%
+\contentsline {subsection}{\numberline {24.1.2}Linear Difference and Differential Equations}{78}{subsection.24.1.2}%
+\contentsline {subsection}{\numberline {24.1.3}Frequency Response with Complex Exponentials}{79}{subsection.24.1.3}%
+\contentsline {section}{\numberline {24.2}Frequency Response with Fourier Series}{80}{section.24.2}%
+\contentsline {subsection}{\numberline {24.2.1}Fourier Series with Complex Exponentials}{80}{subsection.24.2.1}%
+\contentsline {subsection}{\numberline {24.2.2}Solving Coefficients of Fourier Series}{80}{subsection.24.2.2}%
+\contentsline {subsection}{\numberline {24.2.3}Frequency Response and Fourier Series}{80}{subsection.24.2.3}%
+\contentsline {section}{\numberline {24.3}Frequency Response of Composite Systems}{80}{section.24.3}%
+\contentsline {subsection}{\numberline {24.3.1}Cascade Connection}{80}{subsection.24.3.1}%
+\contentsline {subsection}{\numberline {24.3.2}Feedback Connection}{80}{subsection.24.3.2}%
+\contentsline {chapter}{\numberline {25}Introduction to Filtering}{81}{chapter.25}%
+\contentsline {section}{\numberline {25.1}Convolution}{81}{section.25.1}%
+\contentsline {subsection}{\numberline {25.1.1}Convolution Sum and Convolution Integral}{81}{subsection.25.1.1}%
+\contentsline {subsection}{\numberline {25.1.2}Impulses}{81}{subsection.25.1.2}%
+\contentsline {subsection}{\numberline {25.1.3}Weighted Sum of Delta Functions}{81}{subsection.25.1.3}%
+\contentsline {section}{\numberline {25.2}Impulse Response}{81}{section.25.2}%
+\contentsline {subsection}{\numberline {25.2.1}Impulse Response and Convolution}{81}{subsection.25.2.1}%
+\contentsline {subsection}{\numberline {25.2.2}Impulse Response and Frequency Response}{81}{subsection.25.2.2}%
+\contentsline {chapter}{\numberline {26}Impulse Resopnse Filters}{82}{chapter.26}%
+\contentsline {section}{\numberline {26.1}Causality}{82}{section.26.1}%
+\contentsline {section}{\numberline {26.2}Finite Impulse Response Filters}{82}{section.26.2}%
+\contentsline {subsection}{\numberline {26.2.1}Definition of FIR Filters}{82}{subsection.26.2.1}%
+\contentsline {subsection}{\numberline {26.2.2}Design of FIR Filters}{82}{subsection.26.2.2}%
+\contentsline {subsection}{\numberline {26.2.3}Decibels}{82}{subsection.26.2.3}%
+\contentsline {section}{\numberline {26.3}Infinite Impulse Response Filters}{82}{section.26.3}%
+\contentsline {subsection}{\numberline {26.3.1}Definition of IIR Filters}{82}{subsection.26.3.1}%
+\contentsline {subsection}{\numberline {26.3.2}Design of IIR Filters}{82}{subsection.26.3.2}%
+\contentsline {section}{\numberline {26.4}Implementation of Impulse Response Filters}{83}{section.26.4}%
+\contentsline {subsection}{\numberline {26.4.1}Fundamental Policies and Terminologies}{83}{subsection.26.4.1}%
+\contentsline {subsection}{\numberline {26.4.2}Signal Flow Graphs}{83}{subsection.26.4.2}%
+\contentsline {part}{V\hspace {1em}Sampling and Fourier Transform}{84}{part.5}%
+\contentsline {chapter}{\numberline {27}The Four Fourier Transforms, Part I}{85}{chapter.27}%
+\contentsline {section}{\numberline {27.1}Continuous-Time Fourier Series}{85}{section.27.1}%
+\contentsline {section}{\numberline {27.2}Discrete Fourier Transform}{85}{section.27.2}%
+\contentsline {chapter}{\numberline {28}The Four Fourier Transforms, Part II}{86}{chapter.28}%
+\contentsline {section}{\numberline {28.1}Discrete-Time Fourier Transform}{86}{section.28.1}%
+\contentsline {section}{\numberline {28.2}Continuous-Time Fourier Transform}{86}{section.28.2}%
+\contentsline {chapter}{\numberline {29}A Discussion of Fourier Transform}{87}{chapter.29}%
+\contentsline {section}{\numberline {29.1}Fourier Transform vs. Fourier Series}{87}{section.29.1}%
+\contentsline {section}{\numberline {29.2}Properties of Fourier Transform}{87}{section.29.2}%
+\contentsline {chapter}{\numberline {30}Sampling and Reconstruction}{88}{chapter.30}%
+\contentsline {section}{\numberline {30.1}Sampling}{88}{section.30.1}%
+\contentsline {subsection}{\numberline {30.1.1}Sampling and Aliasing}{88}{subsection.30.1.1}%
+\contentsline {subsection}{\numberline {30.1.2}Perceived Pitch Experiment}{88}{subsection.30.1.2}%
+\contentsline {subsection}{\numberline {30.1.3}Aliasing Ambiguities}{88}{subsection.30.1.3}%
+\contentsline {section}{\numberline {30.2}Reconstruction}{88}{section.30.2}%
+\contentsline {subsection}{\numberline {30.2.1}Survey and Introduction}{88}{subsection.30.2.1}%
+\contentsline {subsection}{\numberline {30.2.2}Mathematical Assumptions of Reconstruction}{88}{subsection.30.2.2}%
+\contentsline {chapter}{\numberline {31}The Nyquist-Shannon Sampling Theorem}{89}{chapter.31}%
+\contentsline {section}{\numberline {31.1}The Statement of Theorem}{89}{section.31.1}%
+\contentsline {section}{\numberline {31.2}A Scratch of Its Proof}{89}{section.31.2}%

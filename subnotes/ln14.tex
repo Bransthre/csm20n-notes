@@ -2,11 +2,148 @@
 
 \section{Finding and Using Frequency Response}
 \subsection{Introduction}
-Hi
+To summarize the ending of our previous chapter, for an LTI system, if the input signal is a complex exponential signal $x \in [\mathbb{R} \rightarrow \mathbb{C}]$ such that:
+\[
+    \forall t \in \mathbb{R}, kx(t) = e^{i \omega t} = \cos(\omega t) + i \sin (\omega t)
+\]
+then the output of our system $S$ can be written as:
+\[
+    \forall t \in \mathbb{R}, y(t) = H(\omega) e^{i \omega t}
+\]
+where $H(\omega)$ is a property of the system we call the frequency response at input frequency $\omega$.
 
+\begin{ln-example}{Frequency Response of the Delay System}{}
+    The frequency response of a delay system $S = D_\tau$ for some $\tau \in \mathbb{R}$ is an LTI system, and perhaps the simplest prototype of an LTI system.
+    Suppose the input to the delay system is the compelx exponential $x$ given by:
+    \[
+        \forall t in \mathbb{R}, x(t) = e^{i \omega t}
+    \]
+    Then the output of the system, $y$, satisfies:
+    \[
+        \forall t \in \mathbb{R}, y(t) = e^{i \omega (t - \tau)} = e^{-i \omega \tau} e^{i \omega t}
+    \]
+    And the frequency response of our system output becomes (by matching the definition of frequency response):
+    \[
+        H(\omega) = e^{-i \omega \tau}
+    \]
+\end{ln-example}
+\begin{ln-example}{Frequency Response of Discrete-time Delay System}{}
+    The discrete-time version of a delay system can also becalled the discrete-time $M$-delay system $S = D_M$, where the output of such system is defined as:
+    \[
+        \forall n \in \mathbb{Z}, y(n) = x(n - M)
+    \]
+    In such case, we find that the output of such system is:
+    \[
+        \forall t \in \mathbb{R}, y(t) = e^{i \omega (t - M)} = e^{-i \omega M} e^{i \omega t}
+    \]
+    where the frequency response of the system is similarly defined as the continuous-time delay system as:
+    \[
+        H(\omega) = e^{-i \omega M}
+    \]
+\end{ln-example}
+
+Let us look at another example of solving for frequency responses:
+\begin{ln-example}{Frequency Response of Moving Average System}
+    Consider the following discrete-time system:
+    \[
+        \forall n \in \mathbb{Z}, y(n) = \frac{x(n) + x(n - 1)}{2}
+    \]
+    Then we may observe that when the input for timestep $n$ is $e^{i \omega n}$, the system provides an output:
+    \[
+        y(n) = \frac{e^{i \omega n} + e^{i \omega (n - 1)}}{2} = \frac{1 + e^{-i \omega}}{2} e^{i \omega n}
+    \]
+    providing that:
+    \[
+        H(\omega) = \frac{1 + e^{-i \omega}}{2}
+    \]
+\end{ln-example}
+
+% TODO: no one has taught about differential equations yet, so they may not handle this? We will write as if students know about these equations now
 \subsection{Linear Difference and Differential Equations}
-Hi
+Occasionally, discrete-time systems with input $x$ and output $y$ can be expressed in linear difference equations as exhibited in the previous example.
+Here, we provide a shortcut for finding the frequency response of discrete-time systems described with linear difference equations:
+\begin{ln-theorem}{Frequency Response of Discrete-time Systems}{}
+    For systems described by the lniear difference equation of the form:
+    \[
+        \forall n \in \mathbb{Z}, \sum_{k = 0}^N a_k y(n - k) = \sum_{i = 0}^M b_k x(n - k)
+    \]
+    Assuming an input signal of $x(n) = e^{i \omega n}$ and an output signal of $y(n) = H(\omega) e^{i \omega n}$, we obtain the following form of the above difference equation:
+    \[
+        \forall n \in \mathbb{Z}, \sum_{k = 0}^N a_k H(\omega) e^{i \omega (n - k)} = \sum_{i = 0}^M b_k e^{i \omega (n - k)}
+    \]
+    which provides that
+    \[
+        \forall \omega \in \mathbb{R}, H(\omega) = \frac{\sum_{k = 0}^M b_k e^{-i \omega k}}{\sum_{k = 0}^M a_k e^{-i \omega k}}
+    \]
+\end{ln-theorem}
 
+Then, similarly, for any linear differential equations of the form:
+\begin{ln-theorem}{Frequency Response of Continuous-time Systems}{}
+    \[
+        \forall t \in \mathbb{R}, a_0 y(t) + \sum_{k=1}^N a_k \frac{{\rm d}^k y}{{\rm d} t^k} (t) = b_0 x(t) + \sum_{k=1}^M b_k \frac{{\rm d}^k x}{{\rm d} t^k} (t)
+    \]
+    With the input signal $x(n) = e^{i \omega n}$ and an output signal $y(n) = H(\omega) e^{i \omega n}$, we may first recognize that:
+    \[
+        \frac{\rm{d}^k}{\rm{d} t^k} e^{i \omega t} = {(i \omega)}^k e^{i \omega t}
+    \]
+    we may find that the above linear differential equation can be presented as:
+    \[
+        \sum_{k = 0}^N a_k H(\omega) {(i \omega)}^k e^{i \omega t} = \sum_{k = 0}^M b_k H(\omega) {(i \omega)}^k e^{i \omega t}
+    \]
+    which leads to the frequency response formula:
+    \[
+        \forall \omega \in \mathbb{R}, H(\omega) = \frac{\sum_{k = 0}^M b_k {i \omega}^k}{\sum_{k = 0}^M a_k {i \omega}^k}
+    \]
+\end{ln-theorem}
+
+\subsection{Frequency Response with Complex Exponentials}
+Recall that real-valued sinusoidal signals can be written as a combination of exponential signals; for example:
+\[
+    \cos(\omega t) = \frac{e^{i \omega t} + e^{-i \omega t}}{2}
+\]
+Which leads to an output signal of:
+\[
+    y(t) = \frac{H(\omega) e^{i \omega t} + H(-\omega) e^{-i \omega t}}{2}
+\]
+However, most LTI systems are not capable of producing complex-valued outputs provided real inputs.
+Assuming that $y(t)$, the output signal, is real, we would need that $H(\omega) e^{i \omega t} + H(-\omega) e^{-i \omega t}$ must also be real.
+For the imaginary aspects of these two terms to cancel,
+\[
+    Im{H(\omega) e^{i \omega t}} + Im{H(-\omega) e^{-i \omega t}} = 0
+\]
+Note that,
+\[
+    H(\omega) e^{i \omega t} = H(\omega) (\cos(\omega t) + i \sin(\omega t))
+\]
+Therefore,
+\[
+    Im(H(\omega) e^{i \omega t}) = Re{H(\omega)} \sin(\omega t) + Im{H(\omega)} \cos(\omega t)
+\]
+And, applying this fact on both sides of the prior equation (about cancelling imaginary parts) leads us to the equation:
+\[
+    Re{H(\omega)} \sin(\omega t) + Im{H(\omega)} \cos(\omega t) = -Re{H(-\omega)} \sin(-\omega t) - Im{H(-\omega)} \cos(-\omega t)
+\]
+Leading to the conclusion that:
+\[
+    Im{H(\omega) e^{i \omega t}} = -Im{H(-\omega) e^{-i \omega t}}
+\]
+This conclusion is otherwise known as conjugate summetry.
+
+Based on conjugate symmetry, we further claim that when the input of our LTI system is $x(t) = \cos(\omega t)$, the output of the system is:
+\[
+    \forall t \in \mathbb{R}, y(t) = Re{H(\omega) e^{i \omega t}}
+\]
+Note that by the polar expression,
+\[
+    H(\omega) = |H(\omega)| e^{i \angle H(\omega)}
+\]
+And therefore, upon some mathematical derivation using Euler's Law, we find that:
+\[
+    \forall t \in \mathbb{R}, y(t) = |H(\omega)| \cos(\omega t + \angle H(\omega))
+\]
+which presents the gain $|H(\omega)|$ (magnitude response), phase shift $\angle H(\omega)$ (phase response) of a sinusoidal input with frequency $\omega$.
+
+\section{Frequency Response with Fourier Series}
 \subsection{Fourier Series with Complex Exponentials}
 Hi
 

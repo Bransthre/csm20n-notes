@@ -2,22 +2,98 @@
 
 \section{Fourier Series}
 \subsection{Purpose and Definition}
-Hello
+\begin{ln-define}{Fourier Series}{}
+    A Fourier Series is an approximation of an arbitrary signal, in the mathematical prototype:
+    \[
+        x(t) = A_0 + \sum_{k=1}^\infty A_k \cos(k \omega_0 t + \phi_k)
+    \]
+    where, as introduced before, the coefficients $A_k$ resemble the amplitude of the $k$-th term in Fourier Series, while $\phi_k$ represent its phase.
+    Particularly, the value $\omega_0$ represents a fundamental frequency which all signals share.
+    Mathematically, we may interpret $\omega_0$ as the greatest common divisor of all signals in the Fourier Series.
+\end{ln-define}
+Following the above interpretation, signal with fundamentaly frequency $\omega_0$ would therefore have a period $p = \frac{2\pi}{\omega}$.
+In addition, the constant term $A_0$ is sometimes called the DC (direct current) term, and the terms for which $k \geq 2$ are called harmonics.
+You will have a better intuition of this from EECS 16B when you understand the difference between a direct current and an alternating current.
+
+Notably, not all Fourier Series are supposed to be infinite. A finite fourier series approximation follows the mathematical prototype of:
+\[
+    \tilde{x}(t) = A_0 + \sum_{k = 1}^K A_k \cos(k \omega_0 t + \phi_k)
+\]
+And we would see a reprise of an interesting statement we made before: that, signals are a weighted signals of some other sinusoidal waves.
+To express a signal as a weighted sum of other signals, we visualize a signal via the coefficient of its weighted sum:
+\[
+    \tilde{x}(t) = \begin{bmatrix} A_0 \\ A_1 \\ \vdots \\ A_K \end{bmatrix} \begin{bmatrix} 1 & \cos(\omega_0 t + \phi_1) & \cdots & \cos(\omega_K t + \phi_K) \end{bmatrix}
+\]
+as if the signal $\tilde{x}(t)$ lies in a coordinate system based on its coefficients $A_k$. We call this representation a \textbf{frequency domain} representation for its association with the amplitude-frequency weighted sums as shown above.
+
+For any periodic signal $x: \mathbb{R} \rightarrow \mathbb{R}$ with period $p$, the uniqueness of its Fourier Series is guaranteed.
 
 \subsection{Fourier Series Approximation and Convergence}
-Hello
+Now that we have introduced such a technique, we would naturally question: does Fourier Series always work?
+The answer is negative.
+A termniology, \textbf{Gibb's phenomenon}, specifically describes the situation where a Fourier Series fails to perfectly capture a specific signal $x(t)$.
+The mathematical depiction of such situation would be that as the amount of terms ($k$) approaches infinity in our Fourier Series expansion $\tilde{x}(t)$ of the signal $x(t)$, the difference between $x(t)$ and $\tilde{x}(t)$ doesn't converge to $0$.
 
-\subsection{Uniqueness of Fourier Series}
-Hello
+For a Fourier Series expansion of some periodic signal $x$:
+\[
+    \forall t \in \mathbb{R}, x_N(t) = A_o + \sum_{k = 1}^N A_k \cos(k \omega_0 t + \phi_k)
+\]
+where the validity of such representation holds when
+\[
+    x(t) = \lim_{N \rightarrow \infty} x_N(t)
+\]
 
-\subsection{Approximations to Images}
-Hello
+We will discuss more advanced techniques of finding a Fourier Series approximation (a.k.a. solving for the coefficients $A_k$ and phases $\phi_k$), but let us also discuss the notion of whether a Fourier Series is valid (can approximate the target signal accurately).
+We primarily work with two criterions of validity: uniform convergence and mean squared convergence.
+\begin{ln-define}{Uniform Convergence}{}
+    A strong criterion of the series' validity (its correctness) is the uniform convergence of this limit: for all real number $\epsilon > 0$, there exists a positive integer $M$ such that for all $t \in \mathbb{R}$ and for all $N > M$,
+    \[
+        |x(t) - x_N(t)| < \epsilon
+    \]
+    A sufficient condition for such criterion is that the signal $x$ is continuous and has a piecewise continuous first derivative.
+\end{ln-define}
+\begin{ln-define}{Mean Square Convergence}{}
+    Mean Square Convergence is a weaker condtiion for a Fourier Series' validity, where the total energy in the error over one peiod is zero.
+    The concept of energy in error is not in scope, so understanding its mathematical representation is fine enough.
+    So, a Fourier Series $x_N(t)$ converges in mean square to $x(t)$ if:
+    \[
+        \lim_{N \rightarrow \infty} \int_0^p {|x(t) - x_N (t)|}^2 \,dt = 0
+    \]
+    And, with some other mathematical facts, we may conclude that the following condition indicates mean square convergence:
+    \[
+        \lim_{N \rightarrow \infty} \int_0^p {|x(t)|}^2 \,dt = 0
+    \]
+\end{ln-define}
 
 \section{Discrete-time Signals}
-Hello
+We mentioned previously that computers mostly work with discrete-time signals, which are signals in the form $x: \mathbb{Z} \rightarrow \mathbb{R}$.
+Discrete-time signals can also be decomposed into sinusoidal components like continuous-time signals, with attention to the following subtleties:
 
 \subsection{Periodicity}
-Hello
+A discrete-time signal is periodic if there exists a natural number $p$ such that:
+\[
+    \forall n \in \mathbb{Z}, x(n + p) = x(n)
+\]
+However, not all sinusoidal discrete-time signals are periodic.
+Consider the signal:
+\[
+    x(n) = \cos(2\pi f n)
+\]
+In the continuous-time version, cosine waves have a period of $2 \pi$ (as well as the multiples of $2\pi$), so for the discrete time version of such signal to be periodic, we require a period $p$ such that $fp$ is a nonzero integer.
+Alternatively, this is to say that for discrete timesteps $n$, when $n = p$, it is required that $fp$ is an integer such that the cosine signal is periodic as defined in its continuous-time version.
+And therefore, we can state that the period of a discrete sinusoid is $p = \frac{K}{f}$ where $K$ is the smallest natural number such that $\frac{K}{f}$ is a nonzero integer.
 
 \subsection{Discrete-Time Fourier Series}
-Hello
+A Fourier Series' prototype reamins to be:
+\[
+    x(n) = A_0 + \sum_{k = 1}^K A_k \cos(k \omega_0 n + \phi_k)
+\]
+with the remark that:
+\[
+    K = 
+    \begin{cases}
+        \frac{p - 1}{2} &\text{if $p$ is odd} \\
+        \frac{p}{2} &\text{if $p$ is even}
+    \end{cases}
+\]
+which brings us to an interesting point: discrete-time Fourier Series are never infinite, because discrete-time signals cannot represent frequenceis above a certain value based on the previously posted constraints on periodicity. This will be examined further in the last few chapters of this note.

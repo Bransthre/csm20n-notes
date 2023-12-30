@@ -1,20 +1,366 @@
 \chapter{Linear Systems}
-Hello
 
 \section{Definition of Linear Systems}
-Hello
+Recall that state-space models of systems are expressed with the two components of its update loop:
+\begin{align*}
+    s(n + 1) &= nextState(s(n), x(n)) \\
+    y(n) &= output(s(n), x(n))
+\end{align*}
+Linear system is a category of systems that we primarily work with in this course:
+\begin{ln-define}{Linear System}{}
+    A system is linear upon the following conditions:
+    \begin{enumerate}
+        \item Its initial state is all zeros.
+        \item Its $nextState$ and $output$ functions are linear
+    \end{enumerate}
+    In addition, if both $nextState$ and $output$ functions do not vary with time (or, it is not a function of time), then the system is a \textbf{linear time-invariant} (LTI) system.
+\end{ln-define}
+
+Linear systems can be represented using mathematical objects from linear algebra.
+For example, suppose that our other components of infinite state machine works as follows:
+\[
+    States= \R^n, Inputs = \R^m, Outputs = \R^k
+\]
+Then, we see that each state vector $s(n)$ is $n$-dimensional, each input signal vector $x(n)$ is $m$-dimensional, and each output signal vector $y(n)$ is $k$-dimensional.
+
+For the function $nextState: States \times Inputs \rightarrow States$, if it belongs to a linear system, then that function is by definition a linear function: in other words, a linear transformation that can be treated as a $n \times (n + m)$ matrix.
+Let this matrix be called $T$ (a Transition matrix), then the next state is obtained via the following operation:
+\[
+    s(n + 1) = T \begin{bmatrix} s(n) \\ x(n) \end{bmatrix}
+\]
+On that note, let us slice the $T$ matrix to restate the $nextState$ function as:
+\[
+    s(n + 1) = A s(n) + B x(n)
+\]
+Similarly, the $output$ function may be defined as a $k \times (n + m)$ matrix, but we can also instead write $output$ as:
+\[
+    y(n) = C s(n) + D x(n)
+\]
+This representation of the state-space model of linear time-invariant systems, using matrices $A, B, C, D$, is called an $[A, B, C, D]$ representation.
+
+Let us look at an example of constructing such model:
+\begin{ln-example}{The $[A, B, C, D]$ Representation of An Echo}{}
+    An echo effect describes a difference equation in the following prototype:
+    \[
+        y(n) = x(n) + \alpha y (n - N)
+    \]
+    In such case, we usually work with a state vector in the following format:
+    \[
+        s(n) = \begin{bmatrix} y(n - 1) \\ y(n - 2) \\ \vdots \\ y(n - N) \end{bmatrix}
+    \]
+    Such that we may define the $output$ function's coeffcieints $C$, $D$ simply as:
+    \begin{align*}
+        y(n) &= C s(n) + D x(n) \\
+        &= y(n - N) + x(n) \\
+        &= \begin{bmatrix} 0 & 0 & \cdots & 0 & \alpha \end{bmatrix} \begin{bmatrix} y(n - 1) \\ y(n - 2) \\ \vdots \\ y(n - N) \end{bmatrix} + x(n) \\
+        &= \begin{bmatrix} 0 & 0 & \cdots & 0 & \alpha \end{bmatrix} s(n) + \begin{bmatrix} 1 \end{bmatrix} x(n)
+    \end{align*}
+
+    Then, we may proceed to define the $nextState$ function's coefficients $A$, $B$ as follows:
+    \begin{align*}
+        s(n + 1) &= A s(n) + B x(n) \\
+        &= A \begin{bmatrix} y(n - 1) \\ y(n - 2) \\ \vdots \\ y(n - N) \end{bmatrix} + B x(n) \\
+        &= \begin{bmatrix} y(n) \\ y(n - 1) \\ \vdots \\ y(n - (N - 1)) \end{bmatrix}
+    \end{align*}
+    Recall that the rule of the system is
+    \[
+        y(n) = x(n) + \alpha y (n - N)
+    \]
+    Therefore, we can design the coefficient matrix $A$ to rotate the current state vector such that $y(n - N)$ becomes the top element, and every other element moves down one entry; then, design $B$ such that the top entry of our vector becomes $y(n) = x(n) + \alpha y (n - N)$.
+
+    Realistically,
+    \begin{align*}
+        s(n + 1) &= A s(n) + B x(n) \\
+        &= \begin{bmatrix} y(n) \\ y(n - 1) \\ \vdots \\ y(n - (N - 1)) \end{bmatrix} \\
+        &= \begin{bmatrix} \alpha y(n - N) \\ y(n - 1) \\ \vdots \\ y(n - (N - 1)) \end{bmatrix} + \begin{bmatrix} x(n) \\ 0 \\ \vdots \\ 0 \end{bmatrix} \\
+        &= \begin{bmatrix}
+            0 & 0 & \cdots & 0 & 0 & \alpha \\
+            1 & 0 & \cdots & 0 & 0 & 0 \\
+            0 & 1 & \cdots & 0 & 0 & 0 \\
+            \vdots & \vdots &  & \vdots & \vdots & \vdots \\
+            0 & 0 & \cdots & 0 & 1 & 0 \\
+        \end{bmatrix} s(n) + \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix} x(n) \\
+    \end{align*}
+    Therefore obtaining the coefficient matrices $A, B$ as marked above.
+\end{ln-example}
+
+There is a conspicuous mathematical implication of such state-space model.
+If the model, at any point, receives both $s(n) = 0$ and $x(n) = 0$, then by the formulation of our $nextState$ function, the model's next state ought to be $s(n + 1) = 0$.
+This, what we previously called a ``stutter'', forms a rest state of the $[A, B, C, D]$ system where $s(n+1) = s(n)$. We therefore call the situation $s(n) = 0, x(n) = 0$ an equilibrium of this system, because it introduces a rest state.
 
 \subsection{Impulse Response}
-Hello
+Another available choice for describing LTI systems would be impulse response, which lends strength form the $[A, B, C, D]$ representation.
+For simplicity, let's think of a one-dimensional input space, and consider a function defined as follows:
+\[
+    \forall n \in \mathbb{Z}, \delta(n) = \begin{cases}
+        1, &\text{if} n = 0 \\
+        0, &\text{if} n \neq 0
+    \end{cases}
+\]
+We call this function $\delta: \mathbb{Z} \rightarrow \mathbb{R}$ an impulse, and the response of an LTI system to this particular impulse becomes a complete description of the LTI system?
 
-\section{One-dimensional SISO Systems}
-Hello
+For a system initially at rest, its state sequence becomes the following pattern:
+\begin{align*}
+    s(0) &= 0 \\
+    s(1) &= A s(0) + B x(0) = B \\
+    s(2) &= A s(1) + B x(1) = AB + 0 = AB \\
+    s(3) &= A s(2) + B x(2) = A (AB) = A^2 B \\
+    &\vdots \\
+    s(n) &= A^{n - 1} B \\
+    &\vdots
+\end{align*}
 
-\section{Multidimensional SISO Systems}
-Hello
+Meanwhile, the output sequence (we use the symbol $h$ to resemble the output sequence when provided the impulse function above) would be as follows:
+\begin{align*}
+    h(0) &= 0 \\
+    h(1) &= C s(0) + D x(0) = D \\
+    h(2) &= C s(1) + D x(1) = CB \\
+    h(3) &= C s(2) + D x(2) = CAB \\
+    &\vdots \\
+    h(n) &= C A^{n - 1} B \\
+    &\vdots
+\end{align*}
+Such output sequence, which is the system's response to an impulse function, is called an impulse response.
 
-\section{Multidimensional MIMO Systems}
-Hello
+\section{Linear Systems with Different Input, Output Dimensions}
+\subsection{One-dimensional SISO Systems}
+A one-dimensional SISO system is an LTI system whose states are one-dimensional, and has one-dimensional inputs and one-dimensional outputs.
+Then, its state-space model is simply:
+\begin{align*}
+    s(n+1) &= a s(n) + b x(n) \\
+    y(n) &= c s(n) + d x(n)
+\end{align*}
 
-\section{Linear Input-output Function}
-Hello
+Now, let us think about how to create a One-dimensional SISO system's state-space model provided another system description:
+\begin{ln-example}{Constructing A State-Space Model from System Description}{}
+    \textbf{\textit{Question.}} Construct a state-space model that describes the system whose output is defined as:
+    \[
+        \forall n \in \mathbb{Z}_+, y(n) = \frac{x(n) + x(n - 1)}{2}
+    \]
+    \tcblower
+    Remember that for an LTI system, its output can only depend on the current input, $x(n)$, and the current state, $s(n)$.
+    To avoid having to explicitly work with information outside of current timestep, we can instead let our state function of the system (which is not assigned any role in the original description) record that $s(n) = x(n - 1)$, such that our system's output can be defined as:
+    \[
+        \forall n \in \mathbb{Z}_+, y(n) = \frac{x(n) + s(n)}{2}
+    \]
+    Therefore, we may determine the $output$ function of our state-space model as:
+    \begin{align*}
+        y(n)
+        &= C s(n) + D x(n) \\
+        &= \frac{1}{2} s(n) + \frac{1}{2} x(n)
+        = \frac{1}{2} (s(n) + x(n)) = \frac{1}{2} (x(n - 1) + x(n))
+    \end{align*}
+    What about the $nextState$ function, or, what values do we find for coefficients $A$ and $B$ in:
+    \begin{align*}
+        s(n + 1)
+        &= x((n + 1) - 1) \\
+        &= A s(n) + B x(n)
+    \end{align*}
+    Then, we simply choose $A = 0$ and $B = 1$.
+    
+    Having found a state-space model that fits the system's provided description, we complete our task and report the four coefficients $[A, B, C, D]$.
+\end{ln-example}
+
+While the above logic runs through clearly and is a good approach at solving similar problems, we may pay attention to the following mathematical derivations regarding the original $[A, B, C, D]$ representation of a one-dimensional SISO system:
+\begin{align*}
+    s(n + 1) &= A s(n) + B x(n) \\
+    y(n) &= C s(n) + D x(n) \\
+    &= C (A s(n - 1) + B x(n - 1)) + D x(n) \\
+    y(n - 1) &= C s(n - 1) + D x(n - 1) \\
+    y(n) - A y(n - 1)
+    &= C (A s(n - 1) + B x(n - 1)) + D x(n) - A (C s(n - 1) + D x(n - 1)) \\
+    &= D x(n) + (CB - AD) x(n - 1)
+\end{align*}
+When encountering situations like the above system where we have to rebuild a non-memoryless system into a state-space model like above, we can use the above shortcut to deal with such problems efficiently.
+
+Furthermore, let us consider a compact expression for the state sequence and output sequence of any one-dimensoinal SISO system.
+\begin{ln-example}{Derivation for State Sequence of One-Dimensional SISO System}{}
+    Remember that the state-space model follows:
+    \[
+        \begin{cases}
+            s(n + 1) &= A s(n) + B x(n) \\
+            y(n) &= C s(n) + D x(n)
+        \end{cases}
+    \]
+    \tcblower
+    In a linear system, it must be that $s(0) = 0$. But for the sake of generality, let us for now use the original definition that:
+    \[
+        s(0) = initialState
+    \]
+    Then, as the derivation below casts:
+    \begin{align*}
+        s(n)
+        &= A s(n - 1) + B x(n - 1) \\
+        &= A(A s(n - 2) + B x(n - 2)) + B x(n - 1) \\
+        &= A^2 s(n - 2) + AB x(n - 2) + B x(n - 1) \\
+        &= A^2(A s(n - 3) + B x(n - 3)) + AB x(n - 1) + B x(n - 1) \\
+        &= A^3 s(n - 3) + A^2 B x(n - 3) + AB x(n - 2) + B x(n - 1) \\
+        &\vdots \\
+        &= A^n s(0) + \sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m)
+    \end{align*}
+\end{ln-example}
+
+Provided the state sequence, we can simply substitute its expression into the $output$ function and obtain that:
+\[
+    y(n) = C A^n s(0) + C \sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m) + D x(n)
+\]
+
+Notice that when assuming the contents of $s(0)$ and $x(n)$, some terms of the above sequence may diminish.
+For example, when we correctly impose the definition of linear systems where $s(0) = 0$, we find that the first term of response vanishes. In such case, the second term of the response is called the zero-state response, providing response of system to an input sequence when initial state is zero:
+\begin{align*}
+    \text{Zero-state State Response: } &\sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m)
+    \text{Zero-state Output Response: } &C \sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m) + D x(n)
+\end{align*}
+On the other hand, when the input sequence is entirely zero, the first term of output sequence becomes the response upon a sequence of zero-inputs. This is what we call the zero-input response:
+\begin{align*}
+    \text{Zero-input State Response: } &C A^n s(0)
+    \text{Zero-input Output Response: } &C A^n s(0)
+\end{align*}
+
+\subsection{Multidimensional SISO Systems}
+The difference between a one-dimensional and multidimensional SISO system lies in just the dimensionality of its state space.
+Now, states are $n$-dimensional vectors, meaning the dimensions of coefficients in the system's $[A, B, C, D]$ representation changes to:
+\[
+    A \in \mathbb{R}^{N \times N}, B \in \mathbb{R}^{N \times 1},
+    C \in \mathbb{R}^{1 \times N}, D \in \mathbb{R}^{1 \times 1}
+\]
+such that, just as previously mentioned:
+\[
+    \begin{cases}
+        s(n + 1) &= A s(n) + B x(n) \\
+        y(n) &= C s(n) + D x(n)
+    \end{cases}
+\]
+Note that the state sequences and output sequences we derived before still apply here:
+\[
+    \begin{cases}
+        s(n) &= A^n s(0) + \sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m) \\
+        y(n) &= C A^n s(0) + C \sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m) + D x(n)
+    \end{cases}
+\]
+
+Note that, if the impulse response of a system is finite (meaning that the impulse will be zero for a wide range of timesteps starting at some value), it is known as a finite impulse response (FIR) system; otherwise, it is an infinite impulse response (IIR) system.
+An infinite impulse response is simply an impulse response that ``doesn't die out'', such that we can provide no guarantee at what timestep does the impulse response end.
+Let us look at a few examples for both of them:
+\begin{ln-example}{A Finite Impulse Response System}{}
+    \textbf{\textit{Question.}} Is the impulse response of the following system finite or infinite?
+    \[
+        \forall n \in \mathbb{Z}, y(n) = \frac{1}{M} \sum_{k = 0}^{M - 1} x(n - k)
+    \]
+    (here, $M \in \mathbb{N}$)
+    \tcblower
+    First, let us propose the impulse function from before again:
+    \[
+        \forall n \in \mathbb{Z}, \delta(n) = \begin{cases}
+            1, &\text{if} n = 0 \\
+            0, &\text{if} n \neq 0
+        \end{cases}
+    \]
+    Therefore, we see that the impulse response (the system output provided that the input signal follows the impulse function) is:
+    \[
+        h(n) = \begin{cases}
+            0 &\text{if } n < 0 \\
+            \frac{1}{M} &\text{if } 0 \leq n < M \\
+            0 &\text{if } n \geq M \\
+        \end{cases}
+    \]
+    The impulse response of this system therefore must be finite.
+\end{ln-example}
+
+Now, let us look at a slightly more difficult example:
+\begin{ln-example}{An Infinite Impulse Response System}{}
+    \textbf{\textit{Question.}} For the following system:
+    \[
+        \forall n \in \mathbb{Z}, y(n) = x(n) + \alpha y(n - N)
+    \]
+    \begin{enumerate}
+        \item[(a)] Find the SISO state-space model for the system.
+        \item[(b)] Does this function have a finite or infinite impulse response? Show your work.
+    \end{enumerate}
+    \tcblower
+    The impulse function is, once again,
+    \[
+        \forall n \in \mathbb{Z}, \delta(n) = \begin{cases}
+            1, &\text{if} n = 0 \\
+            0, &\text{if} n \neq 0
+        \end{cases}
+    \]
+    Let us first substitute the above rule with:
+    \[
+        h(n) = \delta(n) + \alpha h(n - N)
+    \]
+    From which we may also obtain that:
+    \begin{align*}
+        h(n - N) &= \delta(n - N) + \alpha h(n - 2N) \\
+        h(n - 2N) &= \delta(n - 2N) + \alpha h(n - 3N)
+    \end{align*}
+    And, as we substitute these terms into the function rule:
+    \begin{align*}
+        h(n) &= \delta(n) + \alpha h(n - N) \\
+        &= \delta(n) + \alpha \delta (n - N) + \alpha^2 h(n - 2N) \\
+        &= \delta(n) + \alpha \delta (n - N) + \alpha^2 \delta(n - 2N) + \alpha^3 \delta(n - 3N) \\
+        &\vdots
+        &= \sum_{k = 0}^{\infty} \alpha^k \delta(n - kN)
+    \end{align*}
+
+    This system involves an echo effect precisely as we discussed before, allowing us to provide the coefficients:
+    \[
+        A = \begin{bmatrix}
+            0 & 0 & 0 & \alpha \\
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0
+        \end{bmatrix},
+        B = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix},
+        C = \begin{bmatrix} 0 \\ 0 \\ 0 \\ \alpha \end{bmatrix},
+        D = \begin{bmatrix} 1 \end{bmatrix}
+    \]
+    Here, we may recall that in SISO systems,
+    \[
+        y(n) = C A^n s(0) + C \sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m) + D x(n)
+    \]
+    We may see if the signal becomes nonzero at some specific time beyond $n = 0$.
+    Remember that $s(0) = 0$, and $x(n)$ is $0$ for all nonzero $n$. Therefore, actually
+    \[
+        y(n) = C A^{n - 1} B x(0)
+    \]
+    Paying attention to the configuration:
+    \[
+        A = \begin{bmatrix}
+            0 & 0 & 0 & \alpha \\
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0
+        \end{bmatrix},
+        A^2 = \begin{bmatrix}
+            0 & 0 & \alpha & 0 \\
+            0 & 0 & 0 & \alpha \\
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0
+        \end{bmatrix},
+        A^3 = \begin{bmatrix}
+            0 & \alpha & 0 & 0 \\
+            0 & 0 & \alpha & 0 \\
+            0 & 0 & 0 & \alpha \\
+            1 & 0 & 0 & 0
+        \end{bmatrix},
+        A^4 = \begin{bmatrix}
+            \alpha & 0 & 0 & 0 \\
+            0 & \alpha & 0 & 0 \\
+            0 & 0 & \alpha & 0 \\
+            0 & 0 & 0 & \alpha
+        \end{bmatrix}
+    \]
+    We may soon notice that for all natural numbers $n$, $h(4n)$ is nonzero.
+    Therefore, the impulse response is infinite.
+\end{ln-example}
+
+\subsection{Multidimensional MIMO Systems}
+A multi-dimensional MIMO system is simply a LTI system whose states, input signals, output signals are all not one-dimensional.
+However, the formula we derived before to summarize state-space models of LTI system still holds.
+\[
+    \begin{cases}
+        s(n) &= A^n s(0) + \sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m) \\
+        y(n) &= C A^n s(0) + C \sum_{m = 0}^{n - 1} A^{n - 1 - m} B x(m) + D x(n)
+    \end{cases}
+\]
